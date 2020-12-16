@@ -14,11 +14,18 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(user)
     if current_user.role_id == 1
-      admin_dashboard_path
+      users_home_path
     else
       users_home_path
     end
-    
+  end
+
+  def authenticate_active_admin_user!
+    authenticate_user!
+    unless current_user.role_id == 1
+      flash[:alert] = "Unauthorized Access!"
+      redirect_to_root_path
+    end
   end
 
 end
