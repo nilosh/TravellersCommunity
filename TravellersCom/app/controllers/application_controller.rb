@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(user)
     if current_user.role_id == 1
-      users_home_path
+      admin_dashboard_path
     else
       users_home_path
     end
