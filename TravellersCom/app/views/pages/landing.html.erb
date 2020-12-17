@@ -1,9 +1,17 @@
-<h3>Sign In</h3>
-
-<% if current_user %>
+<section class = "content-area">
+  <div class="">
     
-<% else %>
-    <%= link_to 'Sign Up', new_user_registration_path %>
+  </div>
+</section>
 
-    <%= link_to 'Sign In', new_user_session_path %>
-<% end %>
+<div class="content-area">
+  <h3>Sign In</h3>
+
+  <% if current_user %>
+      <%= link_to 'Sign Out', destroy_user_session_path %>
+  <% else %>
+      <%= link_to 'Sign Up', new_user_registration_path %>
+
+      <%= link_to 'Sign In', new_user_session_path %>
+  <% end %>
+</div>

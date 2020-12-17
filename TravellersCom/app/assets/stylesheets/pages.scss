@@ -1,3 +1,33 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
+.content-area {
+  background-image: url(backgrounds/background.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 745px;
+  width: 100%;
+}
+
+.icon-bg {
+  background-color: white;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  padding-top: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border: none;
+}
+
+.form {
+  margin: auto;
+  max-width: 350px;
+}
+
+.form-control {
+  height: 80px;
+}
