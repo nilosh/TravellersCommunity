@@ -3,12 +3,24 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
+h6 {
+  color: white;
+}
+
+.form-headings{
+  color: white;
+  font-size: large;
+  padding-bottom: 20px;
+  padding-top: 150px;
+  font-weight: bold;
+}
+
 .content-area {
   background-image: url(backgrounds/background.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 745px;
+  height: 100vh;
   width: 100%;
 }
 
@@ -28,6 +40,63 @@
   max-width: 350px;
 }
 
-.form-control {
-  height: 80px;
+.input-group, .form_group {
+  justify-content: center;
+}
+
+.form-area {
+  margin: auto;
+  text-align: center;
+}
+
+.btn {
+  width: 280px;
+}
+
+.form-text-area {
+  width: 250px;
+  height: 36px;
+  border: 2px solid white;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.row {
+  padding-top: 15px;
+}
+
+.form-content {
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+.sign-up-textbox {
+  width: 370px;
+  border-radius: 5px;
+  border: 1px solid white;
+}
+
+.name-textbox {
+  max-width: 180px;
+  border-radius: 5px;
+  border: 1px solid white;
+}
+
+.row-style {
+  max-width: 380px;
+}
+
+.select {
+  border-radius: 5px;
+  border: 1px solid white;
+}
+
+.form-headings-sign-up{
+  color: white;
+  font-size: large;
+  padding-bottom: 20px;
+  padding-top: 100px;
+  font-weight: bold;
 }
