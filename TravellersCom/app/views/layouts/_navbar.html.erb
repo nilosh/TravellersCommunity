@@ -1,10 +1,25 @@
-<!-- Image and text -->
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <h3>Traveller's Co</h3>
-    <%# <%= link_to image_tag('logo/logo.png', width: "60px"), root_path, class: "d-inline-block" %>
-  </a>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Traveller's Co</a>
+  <%# <%= link_to image_tag('logo/logo.png', width: "60px"), root_path, class: "d-inline-block" %>
   <% if user_signed_in? %>
-    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-light my-2 my-sm-0 btn-search" type="submit">Search</button>
+    </form>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+    data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" 
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="#">My Trips</a>
+        <a class="nav-item nav-link"><%= link_to 'My Profile', users_profile_path %></a>
+        <a class="nav-item nav-link" href="#">Messages</a>
+        <a class="nav-item nav-link"><%= link_to 'Sign Out', 
+        destroy_user_session_path, method: :delete %></a>
+      </div>
+    </div>
   <% end %>
 </nav>
