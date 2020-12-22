@@ -3,6 +3,16 @@
     <%= render "devise/shared/error_messages", resource: resource %>
       <div class="edit-area">
         <div class="row">
+          <div class="col-12">
+            <%= image_tag user_avatar(resource, 100) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.file_field :avatar %>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-3">
             <%= f.label :full_name %>
           </div>

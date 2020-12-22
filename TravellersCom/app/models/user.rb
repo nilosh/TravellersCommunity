@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :avatar
+
   def set_default_user
     if self.new_record?
       self.role_id ||= 2
