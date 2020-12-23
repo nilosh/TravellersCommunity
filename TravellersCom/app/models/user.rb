@@ -7,11 +7,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
+  has_many_attached :images
 
   def set_default_user
     if self.new_record?
       self.role_id ||= 2
     end
+  end
+
+  def photo_thumbnail input
+    return self.images[input].variant(resize: '300x300!').processed
   end
 
   # enum role: [:standard, :premium, :admin]
