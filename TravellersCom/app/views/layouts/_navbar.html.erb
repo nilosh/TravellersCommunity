@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Traveller's Co</a>
+  <%= link_to 'Travellers Co', root_path, class: 'navbar-brand' %>
   <%# <%= link_to image_tag('logo/logo.png', width: "60px"), root_path, class: "d-inline-block" %>
   <% if user_signed_in? %>
     <form class="form-inline">
@@ -9,19 +9,34 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" 
     data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" 
     aria-label="Toggle navigation">
-    <%# <span class="navbar-toggler-icon"></span> %>
-    <%= image_tag user_avatar(current_user,40), class: "rounded-circle" %>
-    <%= current_user.full_name%>
-    
+      <%# <span class="navbar-toggler-icon"></span> %>
+      <%= image_tag user_avatar(current_user), class: "rounded-circle",
+      style: "width: 30px; height: 30px;" %>
+      <div class="h6" style = "display:inline-block;">
+        <%= current_user.full_name %>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+      class="bi bi-caret-down" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M3.204 5L8 10.481 12.796 5H3.204zm-.753.659l4.796 
+        5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 
+        0-.753 1.659z"/>
+      </svg>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">My Trips</a>
-        <a class="nav-item nav-link"><%= link_to 'My Profile', users_profile_path %></a>
-        <a class="nav-item nav-link" href="#">Messages</a>
-        <a class="nav-item nav-link"><%= link_to 'Sign Out', 
-        destroy_user_session_path, method: :delete %></a>
+        <a class="nav-item nav-link" href="#">
+          My Trips
+        </a>
+        <a class="nav-item nav-link">
+          <%= link_to 'My Profile', users_profile_path %>
+        </a>
+        <a class="nav-item nav-link" href="#">
+          Messages
+        </a>
+        <a class="nav-item nav-link">
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+        </a>
       </div>
     </div>
   <% end %>

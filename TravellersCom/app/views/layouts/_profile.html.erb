@@ -12,14 +12,20 @@
     aria-controls="following" aria-selected="false">Following</a>
   </li>
 </ul>
+
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <div class="tab-pane fade show active" id="profile" role="tabpanel" 
+  aria-labelledby="profile-tab">
     <%= render template: "devise/registrations/edit" %>
   </div>
-  <div class="tab-pane fade show active" id="followers" role="tabpanel" aria-labelledby="followers-tab">
+
+  <div class="tab-pane fade show" id="followers" role="tabpanel" 
+  aria-labelledby="followers-tab">
     <%= render template: "pages/home" %>
   </div>
-  <div class="tab-pane fade show" id="following" role="tabpanel" aria-labelledby="following-tab">
+
+  <div class="tab-pane fade show" id="following" role="tabpanel" 
+  aria-labelledby="following-tab">
     EFGH
   </div>
 </div>

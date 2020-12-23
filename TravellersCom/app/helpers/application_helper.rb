@@ -3,11 +3,11 @@ module ApplicationHelper
     I18n.t(:gender_lists).map { |key, value| [ value, key ] } 
   end
 
-  def user_avatar(user, size=50)
+  def user_avatar(user)
     if user.avatar.attached? 
-      user.avatar.variant(resize: "#{size}×#{size}!")
+      user.avatar.attachment
     else
-      image_tag 'default_avatar.png', size: size
+      'default_avatar.png'
     end
   end
 

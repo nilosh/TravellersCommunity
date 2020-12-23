@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "admin/dashboard" => "admin/dashboard#index"
   get "users/home" => "pages#home"
 
+
     # Routes for nav items.
     get "users/profile" => "pages#profile"
     
