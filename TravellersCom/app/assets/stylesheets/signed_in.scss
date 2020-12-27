@@ -18,11 +18,14 @@
 
 .image-gallery {
   background-color: lightgray;
-  width: inherit;
+  width: 370px;
   height: 100px;
 }
 
 .remove-img {
   background: none;
   border: none;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }

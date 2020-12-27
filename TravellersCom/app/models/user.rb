@@ -6,8 +6,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one_attached :avatar
-  has_many_attached :images
+  has_one_attached :avatar, dependent: :destroy
+  has_many_attached :images, dependent: :destroy
+
 
   def set_default_user
     if self.new_record?
@@ -18,6 +19,7 @@ class User < ApplicationRecord
   def photo_thumbnail input
     return self.images[input].variant(resize: '300x300!').processed
   end
+
 
   # enum role: [:standard, :premium, :admin]
 
