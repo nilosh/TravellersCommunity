@@ -4,13 +4,11 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
         <div class="row row-style">
-          <div class="col-6">
-            <%= f.text_field :first_name, autofocus: true, class: "name-textbox", 
+          <div class="col-12">
+            <%= f.text_field :full_name, autofocus: true, class: "name-textbox", 
             placeholder: "First Name" %>
           </div>
-          <div class="col-6">
-            <%= f.text_field :last_name, class: "name-textbox", placeholder: "Last Name" %>
-          </div>
+   
         </div>
         <div class="row row-style">
           <div class="col-12">

@@ -1,0 +1,31 @@
+.signed-in-content {
+  background-color: azure;
+}
+
+.edit-area {
+  margin: auto;
+  max-width: 500px;
+}
+
+.signed-in-h6 {
+  color: black;
+  padding-top: 50px;
+}
+
+.h6 {
+  color: white;
+}
+
+.image-gallery {
+  background-color: lightgray;
+  width: 370px;
+  height: 100px;
+}
+
+.remove-img {
+  background: none;
+  border: none;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}

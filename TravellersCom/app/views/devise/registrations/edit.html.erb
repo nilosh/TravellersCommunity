@@ -1,43 +1,139 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+<section class="container-fluid signed-in-content">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="edit-area">
+        <div class="row">
+          <div class="col-12">
+            <%= image_tag user_avatar(resource), style: "width: 100px; height: 100px" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.file_field :avatar %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <%= f.label :full_name %>
+          </div>
+          <div class="col-9">
+            <%= f.text_field :full_name, autofocus: true, class: "sign-up-textbox" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <%= f.label :date_of_birth %><br />
+          </div>
+          <div class="col-9">
+            <%= f.date_select :dob, :order => [:day, :month, :year], :start_year => 1940, 
+            class: "sign-up-textbox" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <%= f.label :gender %><br />
+          </div>
+          <div class="col-9">
+            <%= f.select :gender, gender_lists, class: "sign-up-textbox" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <%= f.label :email %><br />
+          </div>
+          <div class="col-9">
+            <%= f.email_field :email, autocomplete: "email", class: "sign-up-textbox" %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <%= f.label :password %><br />
+          </div>
+          <div class="col-9">
+            <%= f.password_field :password, autocomplete: "new-password", class: "sign-up-textbox" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <i>(leave blank if you don't want to change it)</i><br />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <%= f.label :password_confirmation %><br />
+          </div>
+          <div class="col-9">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", 
+            class: "sign-up-textbox" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <%= f.label :photos_of_you %> 
+          </div>
+          <div class="col-9">
+            <%= f.file_field :images, multiple: true %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <% if resource.images.attached? %>
+            <div class="d-inline-block image-gallery">
+              <% (0...resource.images.count).each do |image| %>
+                <%= image_tag (resource.images[image]),
+                 style: "width: 100px; height: 100px" %>
+                <%# <button formmethod="delete" class="d-inline-block remove-img" action= "remove_photo" 
+                formnovalidate>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+                  class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 
+                    8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 
+                    8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                  </svg>
+                </button> %>
+                <%# <%= link_to "x", delete_image_user_url(id: resource.images[image].id),
+                method: :delete, class: "remove-img" %>
+                <%= link_to "remove", "", method: :delete %>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <%= f.label :my_trips %> 
+          </div>
+          <div class="col-12">
+            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <%= f.label :current_password %> 
+          </div>
+          <div class="col-9">
+            <%= f.password_field :current_password, autocomplete: "current-password", 
+            class: "sign-up-textbox" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+           <i>(we need your current password to confirm your changes)</i><br />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.submit "Update" %>
+          </div>
+        </div>
+      </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+  <div class="edit-area">
+    <h6 class="signed-in-h6">Deactivate Account</h6>
+      <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+      <%= link_to "Back", :back %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</section>
