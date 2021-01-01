@@ -23,20 +23,21 @@
       </svg>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse ml-auto overlay" id="navbarNavAltMarkup" 
+    style="text-align: right;">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" href="#">
-          My Trips
-        </a>
-        <a class="nav-item nav-link">
+        <ul class="nav-item">
+          <%= link_to 'My Trips', trip_details_path %>
+        </ul>
+        <ul class="nav-item">
           <%= link_to 'My Profile', users_profile_path %>
-        </a>
-        <a class="nav-item nav-link" href="#">
+        </ul>
+        <ul class="nav-item" href="#">
           Messages
-        </a>
-        <a class="nav-item nav-link">
-          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-        </a>
+        </ul>
+        <ul class="nav-item">
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        </ul>
       </div>
     </div>
   <% end %>

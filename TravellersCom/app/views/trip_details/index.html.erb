@@ -1,0 +1,59 @@
+<section class="container-fluid signed-in-content">
+  <div class="row">
+    <h3>My Trips</h3>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-12">
+          <% @trip_details.each do |trip_detail| %>
+            <div>
+              <%= trip_detail.location %>
+              <%= trip_detail.startDate %> - <%= trip_detail.endDate %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <%= render 'form', trip_detail: @trip_detail %>
+    </div>
+  </div>
+</section>
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Trip Details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Startdate</th>
+      <th>Enddate</th>
+      <th>Description</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trip_details.each do |trip_detail| %>
+      <tr>
+        <td><%= trip_detail.location %></td>
+        <td><%= trip_detail.startDate %></td>
+        <td><%= trip_detail.endDate %></td>
+        <td><%= trip_detail.description %></td>
+        <td><%= trip_detail.user_id %></td>
+        <td><%= link_to 'Show', trip_detail %></td>
+        <td><%= link_to 'Edit', edit_trip_detail_path(trip_detail) %></td>
+        <td><%= link_to 'Destroy', trip_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trip Detail', new_trip_detail_path %>

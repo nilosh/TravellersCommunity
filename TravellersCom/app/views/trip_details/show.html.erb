@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @trip_detail.location %>
+</p>
+
+<p>
+  <strong>Startdate:</strong>
+  <%= @trip_detail.startDate %>
+</p>
+
+<p>
+  <strong>Enddate:</strong>
+  <%= @trip_detail.endDate %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @trip_detail.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @trip_detail.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_trip_detail_path(@trip_detail) %> |
+<%= link_to 'Back', trip_details_path %>
