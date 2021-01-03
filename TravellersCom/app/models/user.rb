@@ -6,9 +6,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one_attached :avatar, dependent: :destroy
-  has_many_attached :images, dependent: :destroy
-
+  has_one_attached :avatar
+  has_many_attached :images
+  has_many :reviews
 
   def set_default_user
     if self.new_record?

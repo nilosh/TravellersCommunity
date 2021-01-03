@@ -1,0 +1,18 @@
+<%= form_for([@trip_detail, @trip_detail.reviews.build]) do |f| %>
+  <div id="rating-form">
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
+  </div>
+  </br>
+  <%= f.label :review %>
+  <%= f.text_area :review %>
+  </br>
+  <%= f.submit %>
+<% end %>
+
+<script>
+  $('#rating-form').raty({
+    path: '/assets/',
+    scoreName: 'review[rating]'
+  });
+</script>

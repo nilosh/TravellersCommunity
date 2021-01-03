@@ -1,8 +1,80 @@
-<p id="notice"><%= notice %></p>
+
+<section class="container-fluid signed-in-content">
+  <div class="row">
+    <div class="col-12">
+      <p id="notice"><%= notice %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= render 'shared/breadcrumbs' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= image_tag user_avatar(current_user), class: "rounded-circle",
+      style: "width: 50px; height: 50px;" %>
+      <div class="h6 d-inline-block">
+        <h5><%= current_user.full_name %></h5>
+        <h6><%= @trip_detail.created_at.strftime("%b %d, %Y") %></h6>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h3><%= @trip_detail.location %></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <% if @trip_detail.photos.attached? %>
+        <%= @trip_detail.photos %>
+      <% else %>
+        <p style="text-align:center">No Photos Attached</p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= @trip_detail.description %>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-12">
+        <h5>Leave a Review</h5>
+      </div>
+      <div class="col-12">
+        <%= render 'reviews/form' %>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-12">
+        <%= render @trip_detail.reviews %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+
+
+
 
 <p>
   <strong>Location:</strong>
-  <%= @trip_detail.location %>
+  
 </p>
 
 <p>
@@ -17,7 +89,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @trip_detail.description %>
+  
 </p>
 
 <p>

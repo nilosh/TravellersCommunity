@@ -1,4 +1,5 @@
 class TripDetail < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  has_many_attached :photos, dependent: :destroy
+  belongs_to :user
+  has_many :reviews
+  has_many_attached :photos
 end

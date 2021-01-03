@@ -1,0 +1,38 @@
+<div>
+  <% if user_signed_in? %>
+    <% if review.user_id == current_user.id %>
+      <div class="row justify-content-end">
+        <div class="col-1">
+          <div class="dropdown">
+            <button type="button" class="btn btn-outline dropdown-toggle dropdown-toggle-split" 
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <%= link_to 'Edit', edit_trip_detail_review_path(review.trip_detail) %>
+              </a>
+              <a class="dropdown-item">
+                <%= link_to 'Delete', trip_detail_review_path(review.trip_detail), 
+                method: :delete, data: { confirm: "Delete review?" } %>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        <div class="review-rating" data-score="<%= review.rating %>"></div>
+        <%= review.review %>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+            
+
