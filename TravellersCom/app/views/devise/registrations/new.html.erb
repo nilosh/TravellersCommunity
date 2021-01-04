@@ -5,10 +5,9 @@
       <%= render "devise/shared/error_messages", resource: resource %>
         <div class="row row-style">
           <div class="col-12">
-            <%= f.text_field :full_name, autofocus: true, class: "name-textbox", 
-            placeholder: "First Name" %>
+            <%= f.text_field :full_name, autofocus: true, class: "sign-up-textbox", 
+            placeholder: "First Name + Surname" %>
           </div>
-   
         </div>
         <div class="row row-style">
           <div class="col-12">
@@ -18,8 +17,8 @@
         </div>
         <div class="row row-style">
           <div class="col-12">
-            <%= f.label :date_of_birth %><br />
-            <%= f.date_select :dob, class: "sign-up-textbox" %>
+            <%= f.text_field :dob, data: { behavior: 'flatpickr' }, class: 'sign-up-textbox',
+            placeholder: 'Date Of Birth' %>
           </div>
         </div>
         <div class="row row-style">

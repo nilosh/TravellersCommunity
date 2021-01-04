@@ -1,0 +1,84 @@
+
+<section class="container-fluid signed-in-content">
+  <div class="row">
+    <div class="col-12">
+      <p id="notice" style="text-align:center;"><%= notice %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= render 'shared/breadcrumbs' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1" style="max-width: 60px;">
+      <%= image_tag user_avatar(current_user), class: "rounded-circle",
+        style: "width: 50px; height: 50px;" %>
+    </div>
+    <div class="col-11">
+        <h5><%= current_user.full_name %></h5>
+        <h6><%= @trip_detail.created_at.strftime("%b %d, %Y") %></h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h3><%= @trip_detail.location %></h3>
+    </div>
+      <div id="average-review-rating" data-score=<%= @average_review %>>
+      </div>
+  </div>
+  <div class="row" style="margin: auto;">
+    <div class="col-12" style="background-color:whitesmoke; padding: 10px;">
+      <% if @trip_detail.photos.attached? %>
+        <%= @trip_detail.photos %>
+      <% else %>
+        <p style="text-align:center">No Photos Attached</p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row description-show">
+    <div class="col-12">
+      <%= @trip_detail.description %>
+    </div>
+  </div>
+  <div class="write-review">
+    <div class="row">
+      <div class="col-12">
+        <h5>Leave a Review</h5>
+      </div>
+      <div class="col-12">
+        <%= render 'reviews/form' %>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-12">
+        
+      </div>
+      <div class="col-12">
+        <%= render @trip_detail.reviews %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function () {
+      return $(this).attr('data-score')
+    }
+  });
+</script>

@@ -1,0 +1,36 @@
+<section class="container-fluid signed-in-content">
+  <div class="row">
+    <div class="col-6">
+      <h3>My Trips</h3>
+    </div>
+    <div class="col-6">
+    <%= link_to(trip_details_path) do %>
+      <button>Add New Trip</button>
+    <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-12">
+          <% @trip_details.each do |trip_detail| %>
+            <% if trip_detail.user_id == current_user.id %>
+              <%= link_to(trip_detail) do %>
+                <div>
+                  <%= trip_detail.location %> </br>
+                  <%= trip_detail.startDate %> - <%= trip_detail.endDate %> 
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <%= render 'form', trip_detail: @trip_detail %>
+    </div>
+  </div>
+</section>
+
+
+<p id="notice"><%= notice %></p>

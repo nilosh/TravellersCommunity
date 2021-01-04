@@ -1,0 +1,18 @@
+// Place all the styles related to the tripDetails controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+h5, h6 {
+  color: black;
+}
+
+.signed-in-content {
+  max-width: 1200px;
+}
+
+.description-show {
+  margin: auto;
+  text-align: justify;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

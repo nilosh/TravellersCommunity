@@ -12,8 +12,11 @@
  *
 
  *= require_self
+ *= require jquery-ui/datepicker
  */
 
  @import 'pages';
  @import 'signed_in';
+ @import 'trip_details';
+ @import 'reviews'
 

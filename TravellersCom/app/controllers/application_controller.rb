@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_breadcrumb
 
   protected
 
@@ -28,6 +29,17 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "Unauthorized Access!"
       redirect_to_root_path
     end
+  end
+
+  def add_breadcrumb(label, path = nil)
+    @breadcrumbs << {
+      label: label,
+      path: path
+    }
+  end
+
+  def set_breadcrumb
+    @breadcrumbs = []
   end
 
 end
