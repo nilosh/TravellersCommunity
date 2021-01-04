@@ -1,10 +1,16 @@
-<div>
-  <% if user_signed_in? %>
-    <% if review.user_id == current_user.id %>
-      <div class="row justify-content-end">
-        <div class="col-1">
+<div class="reviews-show">
+  <div class="row">
+    <div class="col-11">
+      <p>
+        <div class="review-rating" data-score="<%= review.rating %>"></div>
+        <%= review.review %>
+      </p>
+    </div>
+    <div class="col-1">
+      <% if user_signed_in? %>
+        <% if review.user_id == current_user.id %>
           <div class="dropdown">
-            <button type="button" class="btn btn-outline dropdown-toggle dropdown-toggle-split" 
+            <button type="button" class="dropdown-btn btn-outline dropdown-toggle dropdown-toggle-split" 
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
             </button>
@@ -18,16 +24,8 @@
               </a>
             </div>
           </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-  <div class="row">
-    <div class="col-12">
-      <p>
-        <div class="review-rating" data-score="<%= review.rating %>"></div>
-        <%= review.review %>
-      </p>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

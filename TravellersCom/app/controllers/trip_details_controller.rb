@@ -9,8 +9,14 @@ class TripDetailsController < InheritedResources::Base
 
   def show
     @trip_detail = TripDetail.find(params[:id])
-    add_breadcrumb(@trip_detail)
+    # add_breadcrumb(@trip_detail)
     @review = Review.new
+
+    if @trip_detail.reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @trip_detail.reviews.average(:rating).round(2)
+    end 
   end
 
   private
