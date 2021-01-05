@@ -8,7 +8,18 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many_attached :images
-  has_many :reviews
+
+  has_many :trip_details, :dependent => :destroy
+  has_many :reviews, :dependent => :destroy
+
+  has_many :following, foreign_key: "follower_id", class_name: "UserRelationship"
+  has_many :followers, foreign_key: "followee_id", class_name: "UserRelationship"
+
+
+  def show
+    @user = User.find(params[:id])
+    super
+  end
 
   def set_default_user
     if self.new_record?
@@ -21,12 +32,4 @@ class User < ApplicationRecord
   end
 
 
-  # enum role: [:standard, :premium, :admin]
-
-  # Initialize new user with standard role by default.
-  # after_initialize do
-  #   if self.new_record?
-  #     self.role ||= :standard
-  #   end
-  # end
 end

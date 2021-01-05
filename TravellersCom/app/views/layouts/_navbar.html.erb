@@ -30,11 +30,11 @@
           <%= link_to 'My Trips', trip_details_path %>
         </ul>
         <ul class="nav-item">
-          <%= link_to 'My Profile', users_profile_path %>
+          <%= link_to 'My Profile', user_profile_path %>
         </ul>
-        <ul class="nav-item" href="#">
+        <%# <ul class="nav-item" href="#">
           Messages
-        </ul>
+        </ul> %>
         <ul class="nav-item">
           <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
         </ul>

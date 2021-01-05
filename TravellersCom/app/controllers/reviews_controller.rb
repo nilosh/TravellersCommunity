@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :find_trip_detail
   before_action :find_review, only: [:edit, :update, :destroy]
 

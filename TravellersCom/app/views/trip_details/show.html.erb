@@ -12,11 +12,11 @@
   </div>
   <div class="row">
     <div class="col-1" style="max-width: 60px;">
-      <%= image_tag user_avatar(current_user), class: "rounded-circle",
+      <%= image_tag user_avatar(@trip_detail.user), class: "rounded-circle",
         style: "width: 50px; height: 50px;" %>
     </div>
     <div class="col-11">
-        <h5><%= current_user.full_name %></h5>
+        <h5><%= @trip_detail.user.full_name %></h5>
         <h6><%= @trip_detail.created_at.strftime("%b %d, %Y") %></h6>
     </div>
   </div>

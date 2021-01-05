@@ -1,5 +1,5 @@
 class TripDetailsController < InheritedResources::Base
-
+  before_action :authenticate_user!
   actions :index, :show, :new, :create, :destroy
 
   def index
@@ -22,7 +22,7 @@ class TripDetailsController < InheritedResources::Base
   private
 
     def trip_detail_params
-      params.require(:trip_detail).permit(:location, :startDate, :endDate, :description, photos: []).
+      params.require(:trip_detail).permit(:location, :startDate, :endDate, :description, :photos => []).
       merge(:user_id => current_user.id)
     end
 

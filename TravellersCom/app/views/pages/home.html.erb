@@ -1,1 +1,56 @@
-<h1>Home</h1>
+<section class="container-fluid signed-in-content">
+  <div>
+    <div class="row">
+      <div class="col-9">
+        <% @trip_details.each do |trip_detail| %>
+          <%# <% if Date.parse(trip_detail.startDate) > Date.today.to_s %>
+            <div class="card">
+              <div class="row card-user-detail">
+                <div class="col-3">
+                  <%= image_tag (trip_detail.user.avatar), class: "rounded-circle",
+                  style: "width: 50px; height: 50px;" %>
+                </div>
+                <div class="col-9">
+                  <h5>
+                    <%= link_to trip_detail.user.full_name, user_path(trip_detail.user) %>
+                  </h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <% if trip_detail.photos.attached? %>
+                    <% (0...1).each do |photo| %>
+                      <div class="card-trip-img">
+                        <%= image_tag (trip_detail.photos[photo]), 
+                        style: "width: 150px; height: 150px; margin:auto;" %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="row card-location">
+                <div class="col-12">
+                  <%= trip_detail.location %> 
+                </div>
+                <div class="col-12">
+                  <%= trip_detail.startDate %> - <%= trip_detail.endDate %> 
+                </div>
+              </div>
+              <div class="row card-desc">
+                <div class="col-12">
+                  <% if trip_detail.description.length > 100 %>
+                    <%= truncate(trip_detail.description, length: 100) { link_to "See More", trip_detail } %>
+                  <% else %>
+                    <%= trip_detail.description %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <%# <% end %> 
+        <% end %>
+      </div>
+      <div class="col-3">
+      </div>
+    </div>
+  </div>
+</section>

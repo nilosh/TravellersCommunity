@@ -3,6 +3,16 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
+a {
+  color: black !important;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: black !important;
+  text-decoration: none !important;
+}
+
 ul {
   padding: 0px;
   padding-top: 15px;
@@ -93,10 +103,6 @@ h6 {
   height: unset !important;
 }
 
-.row-style {
-  
-}
-
 .select {
   border-radius: 5px;
   border: 1px solid white;
@@ -112,4 +118,29 @@ h6 {
 
 .btn-search {
   width: 80px;
+}
+
+.card-trip-img {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: auto;
+  text-align: center;
+}
+
+.card-location {
+  display: inline-block;
+  vertical-align:middle;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+}
+
+.card-desc {
+  text-align: justify;
+  align-content: center;
+  padding: 10px;
+}
+
+.card {
+  max-width: 280px !important;
 }

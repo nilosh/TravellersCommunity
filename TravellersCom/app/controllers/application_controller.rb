@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     if current_user.role_id == 1
       admin_dashboard_path
     else
-      users_home_path
+      home_path
     end
   end
 
