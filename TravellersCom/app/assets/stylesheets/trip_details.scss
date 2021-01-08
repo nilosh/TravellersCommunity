@@ -16,3 +16,20 @@ h5, h6 {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.search-heading {
+  padding-top: 20px !important;
+  padding-bottom: 0px !important;
+}
+
+.filter-row {
+  justify-content: center;
+  align-items: center;
+  padding-top: 0px !important;
+  max-width: 70% !important;
+  font-size: small !important;
+}
+
+.filter-btn {
+  margin-top: 20px;
+}

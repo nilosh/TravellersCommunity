@@ -30,7 +30,12 @@
   <div class="row" style="margin: auto;">
     <div class="col-12" style="background-color:whitesmoke; padding: 10px;">
       <% if @trip_detail.photos.attached? %>
-        <%= @trip_detail.photos %>
+        <% (0...@trip_detail.photos.count).each do |photo| %>
+          <div class="card-trip-img d-inline-block">
+            <%= image_tag (@trip_detail.photos[photo]), 
+            style: "width: 150px; height: 150px; margin:auto;" %>
+          </div>
+        <% end %>
       <% else %>
         <p style="text-align:center">No Photos Attached</p>
       <% end %>
@@ -57,7 +62,9 @@
         
       </div>
       <div class="col-12">
-        <%= render @trip_detail.reviews %>
+        <% if @trip_detail.reviews.count > 0 %>
+          <%= render @trip_detail.reviews %>
+        <% end %>
       </div>
     </div>
   </div>

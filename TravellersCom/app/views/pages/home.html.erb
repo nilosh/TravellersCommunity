@@ -1,20 +1,21 @@
 <section class="container-fluid signed-in-content">
   <div>
     <div class="row">
-      <div class="col-9">
-        <% @trip_details.each do |trip_detail| %>
-          <%# <% if Date.parse(trip_detail.startDate) > Date.today.to_s %>
+      <div class = "col-10">
+        <div class = "row">
+          <% @trip_details.each do |trip_detail| %>
             <div class="card">
               <div class="row card-user-detail">
-                <div class="col-3">
+                <div class = "col-3">
                   <%= image_tag (trip_detail.user.avatar), class: "rounded-circle",
-                  style: "width: 50px; height: 50px;" %>
+                  style: "width: 60px; height: 60px;" %>
                 </div>
                 <div class="col-9">
-                  <h5>
+                  <h6 class = "card-user">
                     <%= link_to trip_detail.user.full_name, user_path(trip_detail.user) %>
-                  </h5>
-                </div>
+                  </h6>
+                  <hr>
+                </div>  
               </div>
               <div class="row">
                 <div class="col-12">
@@ -25,15 +26,19 @@
                         style: "width: 150px; height: 150px; margin:auto;" %>
                       </div>
                     <% end %>
+                  <% else %>
+                    <p style = "text-align: center;"><i>No Photos</i></p>
                   <% end %>
                 </div>
               </div>
               <div class="row card-location">
                 <div class="col-12">
+                  <hr>
                   <%= trip_detail.location %> 
                 </div>
                 <div class="col-12">
                   <%= trip_detail.startDate %> - <%= trip_detail.endDate %> 
+                  <hr>
                 </div>
               </div>
               <div class="row card-desc">
@@ -46,11 +51,36 @@
                 </div>
               </div>
             </div>
-          <%# <% end %> 
+          <% end %>
+        </div>
+      </div>
+      <div class = "col-2">
+        <div class = "row">
+          <div class = "col-12">
+            <h6><strong>User List</strong></h6>
+          </div>
+        </div>
+        <% @users.each do |user| %>
+          <%if user.id != current_user.id %>
+            <% if UserRelationship.where("followee_id != #{user.id}").exists? %>
+              <div class = "row">
+                <div class = "col-12">
+                  <div class = "card toFollow d-inline-block">
+                    <%= image_tag user.avatar, class: "rounded-circle card-img-top d-inline-block",
+                    style: "width: 40px; height: 40px;" %>
+                    <%= user.full_name %>
+                    <hr>
+                    <center>
+                    <%= link_to "Follow", devise_user_relationships_path(user.id), method: :post, 
+                      class: 'btn btn-dark' unless @relationship.present? %>
+                    </center>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
-      <div class="col-3">
-      </div>
-    </div>
+    </div>  
   </div>
 </section>

@@ -1,42 +1,38 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class = "navbar navbar-dark bg-dark fixed-top">
   <%= link_to 'Travellers Co', root_path, class: 'navbar-brand' %>
-  <%# <%= link_to image_tag('logo/logo.png', width: "60px"), root_path, class: "d-inline-block" %>
   <% if user_signed_in? %>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-light my-2 my-sm-0 btn-search" type="submit">Search</button>
-    </form>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" 
-    data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" 
-    aria-label="Toggle navigation">
+    <%= form_tag search_path, :method => 'get', class: "form-inline" do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Trips", 
+      class: "form-control mr-sm-2" %>
+      <%= submit_tag "Search", class: "btn btn-outline-light my-2 my-sm-0 btn-search" %>
+    <% end %>
+    <button class = "navbar-toggler" type = "button" data-toggle = "collapse" 
+    data-target = "#navbarNavAltMarkup" aria-controls = "navbarNavAltMarkup" aria-expanded = "false" 
+    aria-label = "Toggle navigation">
       <%= image_tag user_avatar(current_user), class: "rounded-circle",
       style: "width: 30px; height: 30px;" %>
       <div class="h6 d-inline-block">
         <%= current_user.full_name %>
       </div>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
-      class="bi bi-chevron-double-down" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5
+      <svg xmlns = "http://www.w3.org/2000/svg" width = "16" height = "16" fill = "currentColor" 
+      class = "bi bi-chevron-double-down" viewBox = "0 0 16 16">
+        <path fill-rule = "evenodd" d = "M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5
          0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-        <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 
+        <path fill-rule = "evenodd" d = "M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 
         0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
       </svg>
     </button>
-
-    <div class="collapse navbar-collapse ml-auto overlay" id="navbarNavAltMarkup" 
-    style="text-align: right;">
-      <div class="navbar-nav">
-        <ul class="nav-item">
-          <%= link_to 'My Trips', trip_details_path %>
+    <div class = "collapse navbar-collapse ml-auto overlay" id = "navbarNavAltMarkup" 
+    style = "text-align: right; ">
+      <div class = "navbar-nav">
+        <ul class = "nav-item">
+          <%= link_to 'My Trips', trip_details_path, class: "nav-item" %>
         </ul>
-        <ul class="nav-item">
-          <%= link_to 'My Profile', user_profile_path %>
+        <ul class = "nav-item">
+          <%= link_to 'My Profile', edit_user_registration_path, class: "nav-item" %>
         </ul>
-        <%# <ul class="nav-item" href="#">
-          Messages
-        </ul> %>
-        <ul class="nav-item">
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        <ul class = "nav-item">
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-item" %>
         </ul>
       </div>
     </div>

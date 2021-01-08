@@ -1,4 +1,6 @@
 <section class="container-fluid signed-in-content">
+  <%# <%= render 'layouts/tabs' %> 
+  <%= render partial: 'layouts/tabs', locals: {user: current_user} %>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
       <div class="edit-area">
@@ -25,7 +27,7 @@
             <%= f.label :date_of_birth %><br />
           </div>
           <div class="col-9">
-            <%= f.date_select :dob, :order => [:day, :month, :year], :start_year => 1940, 
+            <%= f.date_field :dob, :order => [:day, :month, :year], :start_year => 1940, 
             class: "sign-up-textbox" %>
           </div>
         </div>
@@ -34,7 +36,7 @@
             <%= f.label :gender %><br />
           </div>
           <div class="col-9">
-            <%= f.select :gender, gender_lists, class: "sign-up-textbox" %>
+            <%= f.select :gender, User.gender_for_select, {}, class: "sign-up-textbox" %>
           </div>
         </div>
         <div class="row">

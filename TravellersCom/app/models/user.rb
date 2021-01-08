@@ -31,5 +31,11 @@ class User < ApplicationRecord
     return self.images[input].variant(resize: '300x300!').processed
   end
 
+  enum gender: [:Prefer_not_to_say, :Male, :Female]
+
+  def self.gender_for_select
+    genders.keys.map{ |x| [x.humanize, x] }
+  end
+
 
 end

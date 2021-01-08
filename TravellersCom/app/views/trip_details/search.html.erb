@@ -1,0 +1,48 @@
+<section class = "container-fluid signed-in-content">
+  <div class = "search-heading">
+  <h2>Search Results </h2>
+  <hr>
+  </div>
+  <div class = "row filter-row">
+    <%= form_tag search_path, :method => 'get', class: "form-inline" do %>
+      <div class = "col">
+        Start Date:
+        <%= date_field_tag :start_date, class: 'form-control' %>
+      </div>
+      <div class = "col">
+        End Date:
+        <%= date_field_tag :end_date, class: 'form-control' %>
+      </div>
+      <div class = "col">
+        Gender:<br>
+        <%= select_tag :gender, options_for_select(['Any', 'Male', 'Female']), class: 'custom-select' %>
+      </div>
+      <div class = "col">
+        <%= submit_tag "Go", class: "btn btn-dark filter-btn" %>
+      </div>
+      <div>
+        <%= @filter %>
+      </div>
+    <% end %>
+    
+    
+
+  </div>
+  <hr>
+ 
+  <div class = "row">
+    <div class = "col-9">
+      <% @trip_detail.each do |trip| %>
+        <%= link_to(trip) do %>
+          <h6>
+            <strong><%= trip.location %></strong>
+          </h6>
+          <i><%= trip.startDate %> - <%= trip.endDate %></i></br>
+        <% end %></br>
+        <%= image_tag (trip.user.avatar), class: "rounded-circle", style: "width: 25px; height: 25px;" %>
+        <%= link_to trip.user.full_name, user_path(trip.user) %>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+</section>

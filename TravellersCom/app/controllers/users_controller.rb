@@ -6,4 +6,5 @@ class UsersController < ApplicationController
     @trip_details = TripDetail.all
     @relationship = @user.followers.find_by(follower: current_user)
   end
+
 end

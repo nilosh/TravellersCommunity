@@ -1,5 +1,10 @@
+$base-color: #C5C6C7;
+$base-color-variation-text: white;
+
 .signed-in-content {
-  background-color: azure;
+  // background-color: $base-color;
+  min-height: 100vh;
+  padding-top: 50px;
 }
 
 .edit-area {
@@ -13,7 +18,7 @@
 }
 
 .h6 {
-  color: white;
+  color: $base-color-variation-text;
 }
 
 .image-gallery {
@@ -28,4 +33,25 @@
   position: absolute;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+}
+
+.navbar-brand {
+  color: $base-color-variation-text !important;
+}
+
+.navbar-brand:hover {
+  color: $base-color-variation-text !important;
+}
+
+.nav-item {
+  color: $base-color-variation-text !important;
+}
+
+.nav-item:hover {
+  color: $base-color-variation-text !important;
+  font-weight: bold;
+}
+
+.footer {
+  padding-top: 20px;
 }

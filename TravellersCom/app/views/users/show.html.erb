@@ -4,10 +4,12 @@
           <div class="col d-inline-block">
             <%= image_tag @user.avatar, style: "width: 100px; height: 100px", class: 'rounded-circle' %>
             <h4 class = "d-inline-block name"><%= @user.full_name %></h4>
-            <%= link_to "Follow", devise_user_relationships_path(@user), method: :post, 
-            class: 'btn btn-dark' unless @relationship.present? %>
-            <%= link_to "Unfollow", user_relationship_path(@relationship.id), method: :delete,
-            class: 'btn btn-dark' if @relationship.present? %>
+            <% if @user != current_user %>
+              <%= link_to "Follow", devise_user_relationships_path(@user), method: :post, 
+              class: 'btn btn-dark' unless @relationship.present? %>
+              <%= link_to "Unfollow", user_relationship_path(@relationship.id), method: :delete,
+              class: 'btn btn-dark' if @relationship.present? %>
+            <% end %>
           </div>
         </div>
         <div class="row">

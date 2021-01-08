@@ -9,17 +9,15 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA54j_6oHE6NLoZCOEoVzJn3rB78WEQgck&libraries=places" 
-    async defer data-turbolinks-eval="false" ></script>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': true %>
   </head>
   <body>
     <div class="wrapper">
       <div>
         <%= render 'layouts/navbar' %>
-        <%# <%= render 'layouts/alerts' %>
       </div>
     </div>
     <%= yield %>
+    
   </body>
 </html>

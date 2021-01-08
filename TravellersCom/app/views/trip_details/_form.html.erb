@@ -14,23 +14,21 @@
   <div class="row">
     <div class="col-12">
       <%= form.text_field :location, placeholder: "Add your Location",
-      class: "form-input-field" %>
+      class: "form-control" %>
     </div>
   </div>
   <div class="row">
     <div class="col-6">
-      <%= form.text_field :startDate, data: { behavior: 'flatpickr' }, placeholder: "Date From",
-      class: "form-input-field" %>
+      <%= form.date_field :startDate, placeholder: "Date From", class: "form-control" %>
     </div>
     <div class="col-6">
-      <%= form.text_field :endDate, data: { behavior: 'flatpickr' }, placeholder: "Date To",
-      class: "form-input-field" %>
+      <%= form.date_field :endDate, placeholder: "Date To", class: "form-control" %>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
       <%= form.text_area :description, placeholder: "Add your Trip Description",
-      class: "form-input-field", rows: "8", cols: "25" %>
+      class: "form-control", rows: "8", cols: "25" %>
     </div>
   </div>
   <div class="row">
@@ -40,7 +38,8 @@
   </div>
   <div class="row">
     <div class="col-12">
-        <%= form.submit %> 
+      </br>
+      <%= form.submit 'Create Trip Detail', class: "btn btn-dark" %> 
     </div>
   </div>
 <% end %>

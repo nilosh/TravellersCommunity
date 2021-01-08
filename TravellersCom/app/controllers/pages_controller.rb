@@ -3,20 +3,15 @@ class PagesController < ApplicationController
   
   def home
     @trip_details = TripDetail.all.with_attached_photos
+
+    @users = User.where(:role_id => 2)
+    @following = UserRelationship.where(followee_id: "%#{current_user.id}%").all
+    # @fol = User.find_by(params[:id])
   end
 
-  # def show
-  #   @user = User.find(params[:id])
-  #   super
-  # end
-
-  # def profile
-  #   @user = User.find params[:id]
-  # end
 
   def delete_image_attachment
     @user.images.find_by(params[:attachment_id]).purge
   end
-
 
 end

@@ -23,11 +23,14 @@ Rails.application.routes.draw do
 
   get "admin/dashboard" => "admin/dashboard#index"
   get "/home" => "pages#home"
-  # get "profile" => "pages#user_profile"
+  get "/search" => "trip_details#search"
 
   # Routes for nav items.
   get "user/profile" => "pages#profile"
 
+  #Routes for tabs.
+  get "user/followers" => "user_relationships#_followers"
+  get "user/following" => "user_relationships#_following"
     
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
