@@ -1,6 +1,7 @@
 ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
 
+  # Dashboard item for recent trips created by users.
   content title: proc { I18n.t("active_admin.dashboard") } do
     columns do
       column do
@@ -14,6 +15,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
+    # Dashboard items for recently joined users.
     columns do
       column do
         panel "Recently joined Users" do

@@ -3,6 +3,8 @@ class ReviewsController < ApplicationController
   before_action :find_trip_detail
   before_action :find_review, only: [:edit, :update, :destroy]
 
+  # This class defines CRUD Operations for handling user reviews on trip details.
+
   def new
     @review = Review.new
   end
@@ -11,7 +13,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.trip_detail_id = @trip_detail.id
     @review.user_id = current_user.id
-
     if @review.save
       redirect_to trip_detail_path(@trip_detail)
     else

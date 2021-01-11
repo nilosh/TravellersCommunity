@@ -2,12 +2,13 @@
   <div class="row">
     <div class="col-11">
       <p>
-        <% @rev = Review.find(params[:id]) %>
+        <% @trip = TripDetail.find(params[:id]) %>
+        <% @rev = Review.find_by(:trip_detail_id => @trip.id) %>
         <%= image_tag @rev.user.avatar, class: "rounded-circle",
         style: "width: 30px; height: 30px;" %>
         <strong><%= link_to @rev.user.full_name, user_path(@rev.user) %></strong>
-
       </p>
+
       <p>
         <div class="review-rating" data-score="<%= review.rating %>"></div>
         <%= review.rating%>

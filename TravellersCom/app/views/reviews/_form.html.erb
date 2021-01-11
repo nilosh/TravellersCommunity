@@ -6,6 +6,8 @@
     <div class="col-11">
       <div id="rating-form">
         <%= f.number_field :rating %>
+        <%# <div class="review-rating" data-score="<%= review.rating %>
+        <%# </div> %>
       </div>
     </div>
   </div>
@@ -26,6 +28,7 @@
   </div>  
 <% end %>
 
+ <%# Scripts for displaying star ratings. %>
 <script>
   $('#rating-form').raty({
     path: '/assets/',

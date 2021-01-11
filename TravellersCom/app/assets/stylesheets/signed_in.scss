@@ -1,8 +1,12 @@
-$base-color: #C5C6C7;
-$base-color-variation-text: white;
+// Web Colors
+$base-color: #EAE7DE;
+$base-color-variation-1: whitesmoke;
+$base-color-variation-2: white;
+$text-color-main: black;
+$border-color:black;
 
 .signed-in-content {
-  // background-color: $base-color;
+  background-color: $base-color;
   min-height: 100vh;
   padding-top: 50px;
 }
@@ -13,16 +17,15 @@ $base-color-variation-text: white;
 }
 
 .signed-in-h6 {
-  color: black;
+  color: $text-color-main;
   padding-top: 50px;
 }
 
 .h6 {
-  color: $base-color-variation-text;
+  color: $base-color-variation-2;
 }
 
 .image-gallery {
-  background-color: lightgray;
   width: 370px;
   height: 100px;
 }
@@ -36,19 +39,19 @@ $base-color-variation-text: white;
 }
 
 .navbar-brand {
-  color: $base-color-variation-text !important;
+  color: $base-color-variation-2 !important;
 }
 
 .navbar-brand:hover {
-  color: $base-color-variation-text !important;
+  color: $base-color-variation-2 !important;
 }
 
 .nav-item {
-  color: $base-color-variation-text !important;
+  color: $base-color-variation-2 !important;
 }
 
 .nav-item:hover {
-  color: $base-color-variation-text !important;
+  color: $base-color-variation-2 !important;
   font-weight: bold;
 }
 

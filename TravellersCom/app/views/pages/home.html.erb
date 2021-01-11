@@ -23,7 +23,7 @@
                     <% (0...1).each do |photo| %>
                       <div class="card-trip-img">
                         <%= image_tag (trip_detail.photos[photo]), 
-                        style: "width: 150px; height: 150px; margin:auto;" %>
+                        style: "width: 150px; height: auto; margin:auto;" %>
                       </div>
                     <% end %>
                   <% else %>
@@ -62,7 +62,7 @@
         </div>
         <% @users.each do |user| %>
           <%if user.id != current_user.id %>
-            <% if UserRelationship.where("followee_id != #{user.id}").exists? %>
+            <% if UserRelationship.where("followee_id" => user.id).exists? %>
               <div class = "row">
                 <div class = "col-12">
                   <div class = "card toFollow d-inline-block">

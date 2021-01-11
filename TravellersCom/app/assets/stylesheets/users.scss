@@ -2,8 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+// Web Colors
+$base-color: #EAE7DE;
+$base-color-variation-1: whitesmoke;
+$base-color-variation-2: white;
+$text-color-main: black;
+$border-color:black;
+
 .info {
-  background-color: whitesmoke;
+  background-color: $base-color-variation-1;
   max-width: 300px !important; 
   border-radius: 8px;
   padding-top: 2px;
@@ -31,7 +38,7 @@
 
 .btn {
   width: fit-content;
-  color: white !important;
+  color: $base-color-variation-2 !important;
 }
 
 .btn:hover {

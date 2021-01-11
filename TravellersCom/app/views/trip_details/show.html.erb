@@ -24,8 +24,7 @@
     <div class="col-12">
       <h3><%= @trip_detail.location %></h3>
     </div>
-      <div id="average-review-rating" data-score=<%= @average_review %>>
-      </div>
+      <div id="average-review-rating" data-score=<%= @average_review %>></div>
   </div>
   <div class="row" style="margin: auto;">
     <div class="col-12" style="background-color:whitesmoke; padding: 10px;">
@@ -33,7 +32,7 @@
         <% (0...@trip_detail.photos.count).each do |photo| %>
           <div class="card-trip-img d-inline-block">
             <%= image_tag (@trip_detail.photos[photo]), 
-            style: "width: 150px; height: 150px; margin:auto;" %>
+            style: "width: 150px; height: auto; margin:auto;" %>
           </div>
         <% end %>
       <% else %>
@@ -58,9 +57,8 @@
   </div>
   <div>
     <div class="row">
-      <div class="col-12">
-        
-      </div>
+      <%# <div class="col-12">
+      </div> %>
       <div class="col-12">
         <% if @trip_detail.reviews.count > 0 %>
           <%= render @trip_detail.reviews %>
@@ -76,14 +74,14 @@
     score: function() {
       return $(this).attr('data-score');
     },
-    path: '/assets/'
+    path: '/javascript/packs/'
   });
 </script>
 
 <script>
   $('.average-review-rating').raty({
     readOnly: true,
-    path: '/assets/',
+    path: '/javascript/packs/',
     score: function () {
       return $(this).attr('data-score')
     }

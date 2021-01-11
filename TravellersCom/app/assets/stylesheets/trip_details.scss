@@ -2,8 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+// Web Colors
+$base-color: #EAE7DE;
+$base-color-variation-1: whitesmoke;
+$base-color-variation-2: white;
+$text-color-main: black;
+$border-color:black;
+
+// CSS for content on trip details page.
+
 h5, h6 {
-  color: black;
+  color: $text-color-main;
 }
 
 .signed-in-content {
@@ -33,3 +42,4 @@ h5, h6 {
 .filter-btn {
   margin-top: 20px;
 }
+

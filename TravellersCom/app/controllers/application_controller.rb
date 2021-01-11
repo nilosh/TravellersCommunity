@@ -5,17 +5,21 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # Configure new parameters for devise users.
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name, :gender, :dob])
     devise_parameter_sanitizer.permit(:account_update, keys: [:full_name, :gender, 
       :dob, :avatar, images: [], remove_photo: [] ])
   end
 
+  # Defines the path to follow after sign up.
   def after_sign_up_path_for(user)
     set_tab :profile
     users_home_path
   end
 
+  # Defines the path to follow after sign in. If role is admin,
+  # direct to the active admin dashboard.
   def after_sign_in_path_for(user)
     if current_user.role_id == 1
       admin_dashboard_path
@@ -32,6 +36,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # This method defines adding a breadcrumb.
   def add_breadcrumb(label, path = nil)
     @breadcrumbs << {
       label: label,
@@ -39,6 +44,7 @@ class ApplicationController < ActionController::Base
     }
   end
 
+  # This method initializes an empty array to hold the breadcrumb paths.
   def set_breadcrumb
     @breadcrumbs = []
   end
