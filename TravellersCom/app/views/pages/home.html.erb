@@ -57,12 +57,13 @@
       <div class = "col-2">
         <div class = "row">
           <div class = "col-12">
-            <h6><strong>User List</strong></h6>
+            <h6 style = "text-align:center; padding-top:20px;"><strong>User List</strong></h6>
           </div>
         </div>
         <% @users.each do |user| %>
           <%if user.id != current_user.id %>
-            <% if UserRelationship.where("followee_id" => user.id).exists? %>
+            <% @relationship = user.followers.find_by(follower: current_user) %>
+            <% if !@relationship %> 
               <div class = "row">
                 <div class = "col-12">
                   <div class = "card toFollow d-inline-block">
@@ -73,6 +74,8 @@
                     <center>
                     <%= link_to "Follow", devise_user_relationships_path(user.id), method: :post, 
                       class: 'btn btn-dark' unless @relationship.present? %>
+                    <%= link_to "Unfollow", user_relationship_path(@relationship.id), method: :delete,
+                      class: 'btn btn-dark' if @relationship.present? %>
                     </center>
                   </div>
                 </div>

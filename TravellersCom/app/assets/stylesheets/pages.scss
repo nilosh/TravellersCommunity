@@ -168,5 +168,9 @@ h6 {
   background-color: $base-color-variation-2;
   padding: 10px;
   margin: auto;
-  width: 200px;
+  width: inherit;
+}
+
+.sign-in-text {
+  color: $base-color-variation-2 !important;
 }
