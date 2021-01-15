@@ -1,65 +1,65 @@
 
-<section class="container-fluid signed-in-content">
-  <div class="row">
-    <div class="col-12">
-      <p id="notice" style="text-align:center;"><%= notice %></p>
+<section class = "container-fluid signed-in-content">
+  <div class = "row">
+    <div class = "col-12">
+      <p id = "notice" style = "text-align:center;"><%= notice %></p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12">
+  <div class = "row">
+    <div class = "col-12">
       <%= render 'shared/breadcrumbs' %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-1" style="max-width: 60px;">
-      <%= image_tag user_avatar(@trip_detail.user), class: "rounded-circle",
+  <div class = "row">
+    <div class = "col-1" style = "max-width: 60px;">
+      <%= image_tag user_avatar(@trip_detail.user), class: "rounded-circle d-inline-block",
         style: "width: 50px; height: 50px;" %>
     </div>
-    <div class="col-11">
+    <div class = "col-11">
         <h5><%= @trip_detail.user.full_name %></h5>
         <h6><%= @trip_detail.created_at.strftime("%b %d, %Y") %></h6>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12">
+  <div class = "row">
+    <div class = "col-12">
       <h3><%= @trip_detail.location %></h3>
     </div>
-      <div id="average-review-rating" data-score=<%= @average_review %>></div>
+      <div id = "average-review-rating" data-score = <%= @average_review %>></div>
   </div>
-  <div class="row" style="margin: auto;">
-    <div class="col-12" style="background-color:whitesmoke; padding: 10px;">
+  <div class = "row" style = "margin: auto;">
+    <div class = "col-12" style = "background-color:whitesmoke; padding: 10px;">
+      <center>
       <% if @trip_detail.photos.attached? %>
         <% (0...@trip_detail.photos.count).each do |photo| %>
-          <div class="card-trip-img d-inline-block">
+          <div class = "card-trip-img d-inline-block" style = "">
             <%= image_tag (@trip_detail.photos[photo]), 
-            style: "width: 150px; height: auto; margin:auto;" %>
+            class:"trip-img" %>
           </div>
         <% end %>
       <% else %>
-        <p style="text-align:center">No Photos Attached</p>
+        <p style = "text-align:center">No Photos Attached</p>
       <% end %>
+      </center>
     </div>
   </div>
-  <div class="row description-show">
-    <div class="col-12">
+  <div class = "row description-show">
+    <div class = "col-12">
       <%= @trip_detail.description %>
     </div>
   </div>
-  <div class="write-review">
-    <div class="row">
-      <div class="col-12">
+  <div class = "write-review">
+    <div class = "row">
+      <div class = "col-12">
         <h5>Leave a Review</h5>
       </div>
-      <div class="col-12">
+      <div class = "col-12">
         <%= render 'reviews/form' %>
       </div>
     </div>
   </div>
   <div>
-    <div class="row">
-      <%# <div class="col-12">
-      </div> %>
-      <div class="col-12">
+    <div class = "row">
+      <div class = "col-12">
         <% if @trip_detail.reviews.count > 0 %>
           <%= render @trip_detail.reviews %>
         <% end %>
@@ -68,20 +68,22 @@
   </div>
 </section>
 
+ <%# Scripts for displaying star ratings. %>
 <script>
   $('.review-rating').raty({
     readOnly: true,
+    size: 36,
     score: function() {
       return $(this).attr('data-score');
     },
-    path: '/javascript/packs/'
+    path: '/assets/images'
   });
 </script>
 
 <script>
   $('.average-review-rating').raty({
     readOnly: true,
-    path: '/javascript/packs/',
+    path: '/assets/images',
     score: function () {
       return $(this).attr('data-score')
     }

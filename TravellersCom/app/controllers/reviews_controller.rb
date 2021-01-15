@@ -4,7 +4,6 @@ class ReviewsController < ApplicationController
   before_action :find_review, only: [:edit, :update, :destroy]
 
   # This class defines CRUD Operations for handling user reviews on trip details.
-
   def new
     @review = Review.new
   end
@@ -36,19 +35,17 @@ class ReviewsController < ApplicationController
     redirect_to trip_detail_path(@trip_detail)
   end
 
-
   private
+    def review_params
+      params.require(:review).permit(:rating, :review)
+    end
 
-  def review_params
-    params.require(:review).permit(:rating, :review)
-  end
+    def find_trip_detail
+      @trip_detail = TripDetail.find(params[:trip_detail_id])
+    end
 
-  def find_trip_detail
-    @trip_detail = TripDetail.find(params[:trip_detail_id])
-  end
-
-  def find_review
-    @review = Review.find(params[:id])
-  end
+    def find_review
+      @review = Review.find(params[:id])
+    end
 
 end

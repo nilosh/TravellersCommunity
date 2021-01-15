@@ -8,7 +8,6 @@
         style: "width: 30px; height: 30px;" %>
         <strong><%= link_to @rev.user.full_name, user_path(@rev.user) %></strong>
       </p>
-
       <p>
         <div class="review-rating" data-score="<%= review.rating %>"></div>
         <%= review.rating%>

@@ -17,6 +17,7 @@ h5, h6 {
 
 .signed-in-content {
   max-width: 1200px;
+  width: 100% !important; 
 }
 
 .description-show {
@@ -43,3 +44,40 @@ h5, h6 {
   margin-top: 20px;
 }
 
+.breadcrumb {
+  background-color: $base-color !important;
+  border-bottom: 1px solid $border-color !important;
+  border-radius: 0px !important;
+}
+
+.trip-img {
+  height: 150px;
+  width: auto;
+}
+
+// For small screen.
+@media only screen and (max-width: 600px) {
+
+  h5 {
+    font-size: 16px !important;
+  }
+
+  .breadcrumb {
+    margin-top: -100px;
+    font-size: 14px !important;
+  }
+
+  .signed-in-content {
+    width: 100vw !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    padding-top: 0px !important;
+  }
+
+  .trip-img {
+    text-align: center !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+}

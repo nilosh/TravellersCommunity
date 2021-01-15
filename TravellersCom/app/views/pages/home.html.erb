@@ -1,7 +1,7 @@
 <section class="container-fluid signed-in-content">
   <div>
     <div class="row">
-      <div class = "col-10">
+      <div class = "col-10 card-row-sm">
         <div class = "row">
           <% @trip_details.each do |trip_detail| %>
             <div class="card">
@@ -54,7 +54,7 @@
           <% end %>
         </div>
       </div>
-      <div class = "col-2">
+      <div class = "col-2 display-none">
         <div class = "row">
           <div class = "col-12">
             <h6 style = "text-align:center; padding-top:20px;"><strong>User List</strong></h6>
@@ -67,15 +67,15 @@
               <div class = "row">
                 <div class = "col-12">
                   <div class = "card toFollow d-inline-block">
-                    <%= image_tag user.avatar, class: "rounded-circle card-img-top d-inline-block",
+                    <%= image_tag user.avatar, class: "rounded-circle card-img-top d-inline-block display-none",
                     style: "width: 40px; height: 40px;" %>
                     <%= user.full_name %>
                     <hr>
                     <center>
                     <%= link_to "Follow", devise_user_relationships_path(user.id), method: :post, 
-                      class: 'btn btn-dark' unless @relationship.present? %>
+                      class: 'btn btn-dark display-none' unless @relationship.present? %>
                     <%= link_to "Unfollow", user_relationship_path(@relationship.id), method: :delete,
-                      class: 'btn btn-dark' if @relationship.present? %>
+                      class: 'btn btn-dark display-none' if @relationship.present? %>
                     </center>
                   </div>
                 </div>
@@ -85,5 +85,37 @@
         <% end %>
       </div>
     </div>  
+    <div class = "row user-list-small display-lg-none">
+      <div class = "col-sm-12 display-lg-none">
+        <h6 style = "text-align:center;">User List </h6>
+        <hr>
+        <div style = "text-align:center; margin:auto;">
+          <% @users.each do |user| %>
+          <%if user.id != current_user.id %>
+            <% @relationship = user.followers.find_by(follower: current_user) %>
+            <% if !@relationship %> 
+              <div class = "row">
+                <div class = "col-12">
+                  <div class = "card toFollow d-inline-block display-lg-none">
+                    <%= image_tag user.avatar, 
+                    class: "rounded-circle card-img-top d-inline-block display-lg-none",
+                    style: "width: 40px; height: 40px;" %>
+                    <div class = "d-inline-block display-lg-none"><%= user.full_name %></div>
+                    <hr>
+                    <center>
+                    <%= link_to "Follow", devise_user_relationships_path(user.id), method: :post, 
+                      class: 'btn btn-dark btn-sm display-lg-none' unless @relationship.present? %>
+                    <%= link_to "Unfollow", user_relationship_path(@relationship.id), method: :delete,
+                      class: 'btn btn-dark btn-sm display-lg-none' if @relationship.present? %>
+                    </center>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

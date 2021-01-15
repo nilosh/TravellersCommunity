@@ -44,3 +44,26 @@ $border-color:black;
 .btn:hover {
   color: white !important;
 }
+
+
+// For small screen.
+@media only screen and (max-width: 600px) {
+
+  .btn-small {
+    font-size: 14px !important;
+    max-width: fit-content !important;
+  }
+
+  .name {
+    font-size: 18px !important;
+    padding: 5px !important;
+  }
+
+  .content {
+    width: 100% !important;
+  }
+
+  .info {
+    max-width: 200px !important;
+  }
+}

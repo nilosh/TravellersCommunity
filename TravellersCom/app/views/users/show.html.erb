@@ -6,9 +6,9 @@
             <h4 class = "d-inline-block name"><%= @user.full_name %></h4>
             <% if @user != current_user %>
               <%= link_to "Follow", devise_user_relationships_path(@user), method: :post, 
-              class: 'btn btn-dark' unless @relationship.present? %>
+              class: 'btn btn-dark btn-small' unless @relationship.present? %>
               <%= link_to "Unfollow", user_relationship_path(@relationship.id), method: :delete,
-              class: 'btn btn-dark' if @relationship.present? %>
+              class: 'btn btn-dark btn-small' if @relationship.present? %>
             <% end %>
           </div>
         </div>

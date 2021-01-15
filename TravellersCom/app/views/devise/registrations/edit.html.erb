@@ -1,5 +1,4 @@
 <section class="container-fluid signed-in-content">
-  <%# <%= render 'layouts/tabs' %> 
   <%= render partial: 'layouts/tabs', locals: {user: current_user} %>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -77,7 +76,7 @@
             <%= f.label :photos_of_you %> 
           </div>
           <div class="col-9">
-            <%= f.file_field :images, multiple: true %>
+            <%= f.file_field :images, multiple: true, class: "choose-fields" %>
           </div>
         </div>
         <div class="row">
@@ -97,8 +96,19 @@
           <div class="col-3">
             <%= f.label :my_trips %> 
           </div>
-          <div class="col-12">
-            
+          <div class="col-9">
+            <% @user = current_user %>
+            <% if @user.trip_details.any? %>
+              <% @user.trip_details.each do |trip_detail| %>
+                <div style = "padding-top: 5px; padding-bottom: 5px">
+                  <%= link_to(trip_detail) do %>
+                    <strong><%= trip_detail.location %></strong> </br>
+                    <%= trip_detail.startDate %> - 
+                    <%= trip_detail.endDate %></br>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
         </div>
         <div class="row">
@@ -125,6 +135,5 @@
   <div class="edit-area">
     <h6 class="signed-in-h6">Deactivate Account</h6>
       <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-      <%= link_to "Back", :back %>
   </div>
 </section>

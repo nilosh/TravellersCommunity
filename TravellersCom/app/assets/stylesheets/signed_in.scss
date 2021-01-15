@@ -5,6 +5,13 @@ $base-color-variation-2: white;
 $text-color-main: black;
 $border-color:black;
 
+// Styles for content displayed after signed in and on signin page.
+
+.wrapper {
+  background-color: $base-color;
+  padding-bottom: 20px;
+}
+
 .signed-in-content {
   background-color: $base-color;
   min-height: 100vh;
@@ -55,6 +62,68 @@ $border-color:black;
   font-weight: bold;
 }
 
-.footer {
-  padding-top: 20px;
+.navbar-items {
+  text-align: right !important;
 }
+
+.nav-avatar {
+  width: 30px;
+  height: 30px;
+}
+
+// For small screen.
+@media only screen and (max-width: 600px) {
+
+  nav {
+    width: 100% !important;
+  }  
+
+  .signed-in-content {
+    padding-top: 80px !important;
+  }
+
+  .edit-area {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .sign-up-textbox {
+    width: 180px !important;
+  }
+
+  .choose-fields {
+    width: 80px;
+    font-size: small;
+  }
+
+  .mobile-search {
+    width: 150px !important;
+    font-size: 14px !important;
+  }
+
+  .btn-search {
+    font-size: 14px !important;
+    margin-left: 5px !important;
+  }
+
+  .navbar-brand {
+    font-size: 16px !important;
+    padding: 0px !important;
+  }
+
+  .navbar-items {
+    text-align: left !important;
+  }
+
+  .nav-name {
+    visibility: hidden !important;
+    display: none !important;
+    font-size: 0px !important;
+  }
+
+  .nav-item {
+    font-size: 14px !important;
+  }
+
+}
+

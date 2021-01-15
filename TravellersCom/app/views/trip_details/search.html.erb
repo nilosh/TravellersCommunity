@@ -6,6 +6,10 @@
   <div class = "row filter-row">
     <%= form_tag search_path, :method => 'get', class: "form-inline" do %>
       <div class = "col">
+        Keywords:
+        <%= text_field_tag :keywords %>
+      </div>
+      <div class = "col">
         Start Date:
         <%= date_field_tag :start_date, class: 'form-control' %>
       </div>
@@ -15,21 +19,14 @@
       </div>
       <div class = "col">
         Gender:<br>
-        <%= select_tag :gender, options_for_select(['Any', 'Male', 'Female']), class: 'custom-select' %>
+        <%= select_tag :gender, options_for_select(['Male', 'Female']), class: 'form-control', include_blank: "--" %>
       </div>
       <div class = "col">
         <%= submit_tag "Go", class: "btn btn-dark filter-btn" %>
       </div>
-      <div>
-        <%= @filter %>
-      </div>
     <% end %>
-    
-    
-
   </div>
   <hr>
- 
   <div class = "row">
     <div class = "col-9">
       <% @trip_detail.each do |trip| %>

@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Authenticating the user to admin page
   def authenticate_active_admin_user!
     authenticate_user!
     unless current_user.role_id == 1

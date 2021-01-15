@@ -1,29 +1,27 @@
-<nav class = "navbar navbar-dark bg-dark fixed-top">
-  <%= link_to 'Travellers Co', root_path, class: 'navbar-brand' %>
+<nav class = "navbar navbar-dark bg-dark container-fluid">
+  <%= link_to 'Travellers Co', root_path, class: 'navbar-brand col-sm-1' %>
   <% if user_signed_in? %>
     <%= form_tag search_path, :method => 'get', class: "form-inline" do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search Trips", 
-      class: "form-control mr-sm-2" %>
+      class: "form-control mr-sm-2 mobile-search" %>
       <%= submit_tag "Search", class: "btn btn-outline-light my-2 my-sm-0 btn-search" %>
     <% end %>
     <button class = "navbar-toggler" type = "button" data-toggle = "collapse" 
     data-target = "#navbarNavAltMarkup" aria-controls = "navbarNavAltMarkup" aria-expanded = "false" 
     aria-label = "Toggle navigation">
-      <%= image_tag user_avatar(current_user), class: "rounded-circle",
-      style: "width: 30px; height: 30px;" %>
-      <div class="h6 d-inline-block">
+      <%= image_tag user_avatar(current_user), class: "rounded-circle nav-avatar"%>
+      <div class="h6 d-inline-block nav-name">
         <%= current_user.full_name %>
       </div>
       <svg xmlns = "http://www.w3.org/2000/svg" width = "16" height = "16" fill = "currentColor" 
       class = "bi bi-chevron-double-down" viewBox = "0 0 16 16">
         <path fill-rule = "evenodd" d = "M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5
-         0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+        0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
         <path fill-rule = "evenodd" d = "M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 
         0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
       </svg>
     </button>
-    <div class = "collapse navbar-collapse ml-auto overlay" id = "navbarNavAltMarkup" 
-    style = "text-align: right; ">
+    <div class = "collapse navbar-collapse ml-auto overlay navbar-items" id = "navbarNavAltMarkup" >
       <div class = "navbar-nav">
         <ul class = "nav-item">
           <%= link_to 'My Trips', trip_details_path, class: "nav-item" %>

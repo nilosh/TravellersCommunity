@@ -2,6 +2,8 @@ class UserRelationshipsController < ApplicationController
   include Pagy::Backend
   before_action :authenticate_user!
 
+  # Operations for creating and destroying user relationships.
+
   def create
     other_user = User.find(params[:devise_id])
     @relationship = UserRelationship.new(follower_id: current_user.id, followee_id: other_user.id)

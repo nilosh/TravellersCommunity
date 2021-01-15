@@ -1,8 +1,11 @@
-<%= form_with(model: trip_detail, local: true) do |form| %>
+<%= form_with(model: trip_detail, local: true, data: {controller: "places", 
+action: "google-maps-callback@window->places#initMap" }) do |form| %>
   <% if trip_detail.present? %>
     <% if trip_detail.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(trip_detail.errors.count, "error")%> prohibited this trip_detail from being saved:</h2>        
+        <h2>
+        <%= pluralize(trip_detail.errors.count, "error") %> prohibited this trip_detail from being saved:
+        </h2>        
         <ul>
           <% trip_detail.errors.full_messages.each do |message| %>
             <li><%= message%></li>
@@ -14,7 +17,7 @@
   <div class="row">
     <div class="col-12">
       <%= form.text_field :location, placeholder: "Add your Location",
-      class: "form-control" %>
+      class: "form-control", data: { target: "places.field" } %>
     </div>
   </div>
   <div class="row">

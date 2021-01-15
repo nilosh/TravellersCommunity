@@ -5,9 +5,8 @@
     </div>
     <div class="col-11">
       <div id="rating-form">
-        <%= f.number_field :rating %>
-        <%# <div class="review-rating" data-score="<%= review.rating %>
-        <%# </div> %>
+        <%= f.number_field :rating, max: 5, class: "review-input" %>
+        </div>
       </div>
     </div>
   </div>
@@ -17,7 +16,7 @@
     </div>
     <div class="col-11">
       <div id="rating-form">
-        <%= f.text_area :review, class: "form-control", rows: 5 %>
+        <%= f.text_area :review, class: "review-input", rows: 5 %>
       </div>
     </div>
   </div>
@@ -31,7 +30,7 @@
  <%# Scripts for displaying star ratings. %>
 <script>
   $('#rating-form').raty({
-    path: '/assets/',
+    path: '/assets/images',
     scoreName: 'review[rating]'
   });
 </script>
