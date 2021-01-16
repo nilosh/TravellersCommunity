@@ -34,7 +34,7 @@
           <h6>
             <strong><%= trip.location %></strong>
           </h6>
-          <i><%= trip.startDate %> - <%= trip.endDate %></i></br>
+          <i><%= trip.start %> - <%= trip.end %></i></br>
         <% end %></br>
         <%= image_tag (trip.user.avatar), class: "rounded-circle", style: "width: 25px; height: 25px;" %>
         <%= link_to trip.user.full_name, user_path(trip.user) %>

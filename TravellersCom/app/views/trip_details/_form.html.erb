@@ -22,10 +22,10 @@ action: "google-maps-callback@window->places#initMap" }) do |form| %>
   </div>
   <div class="row">
     <div class="col-6">
-      <%= form.date_field :startDate, placeholder: "Date From", class: "form-control" %>
+      <%= form.date_field :start, placeholder: "Date From", class: "form-control" %>
     </div>
     <div class="col-6">
-      <%= form.date_field :endDate, placeholder: "Date To", class: "form-control" %>
+      <%= form.date_field :end, placeholder: "Date To", class: "form-control" %>
     </div>
   </div>
   <div class="row">

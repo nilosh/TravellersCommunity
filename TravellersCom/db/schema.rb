@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 2021_01_04_060217) do
 
   create_table "trip_details", force: :cascade do |t|
     t.string "location"
-    t.date "startDate"
-    t.date "endDate"
+    t.date "start"
+    t.date "end"
     t.text "description"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

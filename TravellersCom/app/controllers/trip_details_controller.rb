@@ -21,12 +21,17 @@ class TripDetailsController < InheritedResources::Base
 
   # Queries for search and filters.
   def search
-    @trip_detail = TripDetail.search(params[:search])
+    if !params[:search].blank?
+      puts "Search from top nav bar."
+      @trip_detail = TripDetail.search(params[:search])
+    end
     if !params[:keywords].blank?
-      @trip_detail = TripDetail.where(["location ILIKE ?", params[:keywords]])
-      @trip_detail = @trip_detail.where(["trip_details.startDate LIKE ?", params[:start_date]]) if params[:start_date].present?
-      @trip_detail = @trip_detail.where(["trip_details.endDate LIKE ?", params[:end_date]]) if params[:end_date].present?
+      puts "KEywords not blank"
+      @trip_detail = TripDetail.where(["trip_details.location ILIKE ?", params[:keywords]])
+      @trip_detail = @trip_detail.where(["trip_details.start = ?", params[:start_date]]) if params[:start_date].present?
+      @trip_detail = @trip_detail.where(["trip_details.end = ?", params[:end_date]]) if params[:end_date].present?
       if params[:gender].present?
+        puts "Gender present."
         if params[:gender] == "Male" || params[:gender] == "Female"
           if params[:gender] == "Male"
             @trip_detail = @trip_detail.joins(:user).where(users: {gender: 1})
@@ -34,8 +39,6 @@ class TripDetailsController < InheritedResources::Base
             @trip_detail = @trip_detail.joins(:user).where(users: {gender: 2})
           end
         end
-      else
-        @trip_detail = @trip_detail.joins(:user).where(users: {gender: "1"}).where(users:{gender: "2"})
       end
     else
       @trip_detail = TripDetail.search(params[:search])
@@ -44,7 +47,7 @@ class TripDetailsController < InheritedResources::Base
 
   private
     def trip_detail_params
-      params.require(:trip_detail).permit(:location, :startDate, :endDate, :description, :photos => []).
+      params.require(:trip_detail).permit(:location, :start, :end, :description, :photos => []).
       merge(:user_id => current_user.id)
     end
 
