@@ -36,7 +36,7 @@ action: "google-maps-callback@window->places#initMap" }) do |form| %>
   </div>
   <div class="row">
     <div class="col-12">
-      <%= form.file_field :photos, multiple: true %>
+      <%= form.file_field :photos, multiple: true, accept:'image/*' %>
     </div>
   </div>
   <div class="row">

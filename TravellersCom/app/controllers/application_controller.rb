@@ -50,4 +50,13 @@ class ApplicationController < ActionController::Base
     @breadcrumbs = []
   end
 
+  # This method handles the deletion of images attached by the user.
+  def delete_image_attachment
+    @image = ActiveStorage::Attachment.find(params[:id])
+    @image.purge
+    redirect_back(fallback_location: request.referer)
+    # @user.images.find_by(params[:attachment_id]).purge
+  end
+  
+
 end

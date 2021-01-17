@@ -7,10 +7,6 @@ Rails.application.routes.draw do
 
   resources :users
     
-  # devise_scope :user do
-  #   root to: 'devise/sessions#new'
-  # end
-
   resources :devise do
     resources :user_relationships, only: [:create]
   end

@@ -10,7 +10,7 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <%= f.file_field :avatar %>
+            <%= f.file_field :avatar,  accept:'image/*' %>
           </div>
         </div>
         <div class="row">
@@ -76,7 +76,7 @@
             <%= f.label :photos_of_you %> 
           </div>
           <div class="col-9">
-            <%= f.file_field :images, multiple: true, class: "choose-fields" %>
+            <%= f.file_field :images, multiple: true, class: "choose-fields", size: "5",  accept:'image/*' %>
           </div>
         </div>
         <div class="row">
@@ -86,7 +86,7 @@
               <% (0...resource.images.count).each do |image| %>
                 <%= image_tag (resource.images[image]),
                  style: "width: 100px; height: 100px" %>
-                <%= link_to "remove", "", method: :delete %>
+                <%# <%= link_to "remove", delete_image_attachment(resource.images[image].id) %>
               <% end %>
             </div>
             <% end %>

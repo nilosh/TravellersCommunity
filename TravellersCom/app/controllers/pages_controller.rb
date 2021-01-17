@@ -8,10 +8,5 @@ class PagesController < ApplicationController
     @users = User.where(:role_id => 2)
     @following = UserRelationship.where(followee_id: "%#{current_user.id}%").all
   end
-
-  # This method handles the deletion of images attached by the user.
-  def delete_image_attachment
-    @user.images.find_by(params[:attachment_id]).purge
-  end
-
+ 
 end
