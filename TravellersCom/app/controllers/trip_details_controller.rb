@@ -26,12 +26,10 @@ class TripDetailsController < InheritedResources::Base
       @trip_detail = TripDetail.search(params[:search])
     end
     if !params[:keywords].blank?
-      puts "KEywords not blank"
       @trip_detail = TripDetail.where(["trip_details.location ILIKE ?", params[:keywords]])
       @trip_detail = @trip_detail.where(["trip_details.start = ?", params[:start_date]]) if params[:start_date].present?
       @trip_detail = @trip_detail.where(["trip_details.end = ?", params[:end_date]]) if params[:end_date].present?
       if params[:gender].present?
-        puts "Gender present."
         if params[:gender] == "Male" || params[:gender] == "Female"
           if params[:gender] == "Male"
             @trip_detail = @trip_detail.joins(:user).where(users: {gender: 1})
