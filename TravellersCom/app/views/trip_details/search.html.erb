@@ -19,7 +19,8 @@
       </div>
       <div class = "col">
         Gender:<br>
-        <%= select_tag :gender, options_for_select(['Male', 'Female']), class: 'form-control', include_blank: "--" %>
+        <%= select_tag :gender, options_for_select(['Male', 'Female']), 
+        class: 'form-control', include_blank: "--" %>
       </div>
       <div class = "col">
         <%= submit_tag "Go", class: "btn btn-dark filter-btn" %>

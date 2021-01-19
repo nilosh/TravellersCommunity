@@ -5,8 +5,7 @@
     </div>
     <div class="col-11">
       <div id="rating-form">
-        <%= f.number_field :rating, max: 5, class: "review-input" %>
-        </div>
+        <%= f.number_field :rating, max: 5 %>
       </div>
     </div>
   </div>
@@ -15,13 +14,11 @@
       <%= f.label :review %>
     </div>
     <div class="col-11">
-      <div id="rating-form">
-        <%= f.text_area :review, class: "review-input", rows: 5 %>
-      </div>
+        <%= f.text_area :review, rows: 5 %>
     </div>
   </div>
   <div class="row">
-    <div class="col-12" style = "text-align: center;">
+     <div class="col-12" style = "text-align: center;">
       <%= f.submit 'Create Review', class: "btn btn-dark" %>
     </div>
   </div>  

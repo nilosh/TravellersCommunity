@@ -1,0 +1,898 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.1 (Ubuntu 13.1-1.pgdg20.04+1)
+-- Dumped by pg_dump version 13.1 (Ubuntu 13.1-1.pgdg20.04+1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: nilosh
+--
+
+CREATE TABLE public.active_admin_comments (
+    id bigint NOT NULL,
+    namespace character varying,
+    body text,
+    resource_type character varying,
+    resource_id bigint,
+    author_type character varying,
+    author_id bigint,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_admin_comments OWNER TO nilosh;
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: nilosh
+--
+
+CREATE SEQUENCE public.active_admin_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_admin_comments_id_seq OWNER TO nilosh;
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nilosh
+--
+
+ALTER SEQUENCE public.active_admin_comments_id_seq OWNED BY public.active_admin_comments.id;
+
+
+--
+-- Name: active_storage_attachments; Type: TABLE; Schema: public; Owner: nilosh
+--
+
+CREATE TABLE public.active_storage_attachments (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    record_type character varying NOT NULL,
+    record_id bigint NOT NULL,
+    blob_id bigint NOT NULL,
+    created_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_attachments OWNER TO nilosh;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE; Schema: public; Owner: nilosh
+--
+
+CREATE SEQUENCE public.active_storage_attachments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_attachments_id_seq OWNER TO nilosh;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nilosh
+--
+
+ALTER SEQUENCE public.active_storage_attachments_id_seq OWNED BY public.active_storage_attachments.id;
+
+
+--
+-- Name: active_storage_blobs; Type: TABLE; Schema: public; Owner: nilosh
+--
+
+CREATE TABLE public.active_storage_blobs (
+    id bigint NOT NULL,
+    key character varying NOT NULL,
+    filename character varying NOT NULL,
+    content_type character varying,
+    metadata text,
+    byte_size bigint NOT NULL,
+    checksum character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_blobs OWNER TO nilosh;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE; Schema: public; Owner: nilosh
+--
+
+CREATE SEQUENCE public.active_storage_blobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_blobs_id_seq OWNER TO nilosh;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nilosh
+--
+
+ALTER SEQUENCE public.active_storage_blobs_id_seq OWNED BY public.active_storage_blobs.id;
+
+
+--
+-- Name: admin_users; Type: TABLE; Schema: public; Owner: nilosh
+--
+
+CREATE TABLE public.admin_users (
+    id bigint NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.admin_users OWNER TO nilosh;
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE; Schema: public; Owner: nilosh
+--
+
+CREATE SEQUENCE public.admin_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.admin_users_id_seq OWNER TO nilosh;
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nilosh
+--
+
+ALTER SEQUENCE public.admin_users_id_seq OWNED BY public.admin_users.id;
+
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: nilosh
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ar_internal_metadata OWNER TO nilosh;
+
+--
+-- Name: reviews; Type: TABLE; Schema: public; Owner: nilosh
+--
+
+CREATE TABLE public.reviews (
+    id bigint NOT NULL,
+    rating integer,
+    review text,
+    user_id bigint NOT NULL,
+    trip_detail_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.reviews OWNER TO nilosh;
+
+--
+-- Name: reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: nilosh
+--
+
+CREATE SEQUENCE public.reviews_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.reviews_id_seq OWNER TO nilosh;
+
+--
+-- Name: reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nilosh
+--
+
+ALTER SEQUENCE public.reviews_id_seq OWNED BY public.reviews.id;
+
+
+--
+-- Name: roles; Type: TABLE; Schema: public; Owner: nilosh
+--
+
+CREATE TABLE public.roles (
+    id bigint NOT NULL,
+    role_name character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.roles OWNER TO nilosh;
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: nilosh
+--
+
+CREATE SEQUENCE public.roles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.roles_id_seq OWNER TO nilosh;
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nilosh
+--
+
+ALTER SEQUENCE public.roles_id_seq OWNED BY public.roles.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: nilosh
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO nilosh;
+
+--
+-- Name: trip_details; Type: TABLE; Schema: public; Owner: nilosh
+--
+
+CREATE TABLE public.trip_details (
+    id bigint NOT NULL,
+    location character varying,
+    start date,
+    "end" date,
+    description text,
+    user_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.trip_details OWNER TO nilosh;
+
+--
+-- Name: trip_details_id_seq; Type: SEQUENCE; Schema: public; Owner: nilosh
+--
+
+CREATE SEQUENCE public.trip_details_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.trip_details_id_seq OWNER TO nilosh;
+
+--
+-- Name: trip_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nilosh
+--
+
+ALTER SEQUENCE public.trip_details_id_seq OWNED BY public.trip_details.id;
+
+
+--
+-- Name: user_relationships; Type: TABLE; Schema: public; Owner: nilosh
+--
+
+CREATE TABLE public.user_relationships (
+    id bigint NOT NULL,
+    follower_id integer,
+    followee_id integer,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.user_relationships OWNER TO nilosh;
+
+--
+-- Name: user_relationships_id_seq; Type: SEQUENCE; Schema: public; Owner: nilosh
+--
+
+CREATE SEQUENCE public.user_relationships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_relationships_id_seq OWNER TO nilosh;
+
+--
+-- Name: user_relationships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nilosh
+--
+
+ALTER SEQUENCE public.user_relationships_id_seq OWNED BY public.user_relationships.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: nilosh
+--
+
+CREATE TABLE public.users (
+    id bigint NOT NULL,
+    full_name character varying DEFAULT ''::character varying NOT NULL,
+    gender integer DEFAULT 0 NOT NULL,
+    dob timestamp without time zone NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    role_id bigint NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO nilosh;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: nilosh
+--
+
+CREATE SEQUENCE public.users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO nilosh;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nilosh
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: active_admin_comments id; Type: DEFAULT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.active_admin_comments ALTER COLUMN id SET DEFAULT nextval('public.active_admin_comments_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_attachments id; Type: DEFAULT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.active_storage_attachments ALTER COLUMN id SET DEFAULT nextval('public.active_storage_attachments_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_blobs id; Type: DEFAULT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval('public.active_storage_blobs_id_seq'::regclass);
+
+
+--
+-- Name: admin_users id; Type: DEFAULT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.admin_users ALTER COLUMN id SET DEFAULT nextval('public.admin_users_id_seq'::regclass);
+
+
+--
+-- Name: reviews id; Type: DEFAULT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.reviews ALTER COLUMN id SET DEFAULT nextval('public.reviews_id_seq'::regclass);
+
+
+--
+-- Name: roles id; Type: DEFAULT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.roles ALTER COLUMN id SET DEFAULT nextval('public.roles_id_seq'::regclass);
+
+
+--
+-- Name: trip_details id; Type: DEFAULT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.trip_details ALTER COLUMN id SET DEFAULT nextval('public.trip_details_id_seq'::regclass);
+
+
+--
+-- Name: user_relationships id; Type: DEFAULT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.user_relationships ALTER COLUMN id SET DEFAULT nextval('public.user_relationships_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: active_admin_comments; Type: TABLE DATA; Schema: public; Owner: nilosh
+--
+
+COPY public.active_admin_comments (id, namespace, body, resource_type, resource_id, author_type, author_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: active_storage_attachments; Type: TABLE DATA; Schema: public; Owner: nilosh
+--
+
+COPY public.active_storage_attachments (id, name, record_type, record_id, blob_id, created_at) FROM stdin;
+1	avatar	User	2	1	2021-01-16 05:44:07.942402
+2	photos	TripDetail	1	2	2021-01-16 05:44:54.08717
+3	photos	TripDetail	2	3	2021-01-16 05:46:13.667381
+4	avatar	User	3	4	2021-01-16 05:47:12.43519
+5	photos	TripDetail	3	5	2021-01-16 05:47:46.377757
+6	avatar	User	4	6	2021-01-16 05:49:43.46126
+7	photos	TripDetail	4	7	2021-01-16 05:52:12.301569
+8	photos	TripDetail	4	8	2021-01-16 05:52:12.313927
+9	images	User	2	9	2021-01-17 09:53:06.482648
+\.
+
+
+--
+-- Data for Name: active_storage_blobs; Type: TABLE DATA; Schema: public; Owner: nilosh
+--
+
+COPY public.active_storage_blobs (id, key, filename, content_type, metadata, byte_size, checksum, created_at) FROM stdin;
+1	wn3lclbtre62zno1sx3hcpwr75ep	hardinscott.jpeg	image/jpeg	{"identified":true,"width":225,"height":225,"analyzed":true}	3287	LXQZo0W+Fo/90XLwgCxhNw==	2021-01-16 05:44:07.938193
+2	u8942m3u7jzbj78n3x1zizzlbe0e	ella.jpg	image/jpeg	{"identified":true,"width":900,"height":600,"analyzed":true}	82758	KyVMQxiN7x1DHieUlTpvdw==	2021-01-16 05:44:54.078401
+3	lkc5zesoatrai01m2r3n19irebrg	galle.jpg	image/jpeg	{"identified":true,"width":1200,"height":800,"analyzed":true}	537905	mWfCMuq1YE2bnJ318NGmnA==	2021-01-16 05:46:13.659224
+4	fdec113tynv9tr73kw8x9ylnobl2	mary.jpg	image/jpeg	{"identified":true,"width":128,"height":128,"analyzed":true}	3539	7n8j1stmd/HcxTS8Z3UhBQ==	2021-01-16 05:47:12.432352
+5	08nir8oe3sun1r4k7b5urgjw2570	trinco.jpg	image/jpeg	{"identified":true,"width":250,"height":166,"analyzed":true}	8968	ZOjefshyVwkT+lcqGwp3Tw==	2021-01-16 05:47:46.369877
+6	q8kgrpsl2gvph7w2svc4lqk33hn5	vanessa.jpeg	image/jpeg	{"identified":true,"width":200,"height":200,"analyzed":true}	14468	p1LS7XJWhnWTVOBi9hvkXw==	2021-01-16 05:49:43.457553
+7	9fssar9azxj3nwjzrv3sz5lt6phm	mirissa1.jpeg	image/jpeg	{"identified":true,"width":244,"height":207,"analyzed":true}	11548	GLT0FCFjb8N69CEDk7AudA==	2021-01-16 05:52:12.296287
+8	pdabdh03r9r7x56flc8if80k1v86	mirissa2.jpg	image/jpeg	{"identified":true,"width":640,"height":640,"analyzed":true}	182336	UyXksoXYuXv3jXgRGIvHEg==	2021-01-16 05:52:12.308486
+9	gsxxxvih0z510ofw2gkze32nq7q8	hardin.jpg	image/jpeg	{"identified":true,"width":800,"height":1132,"analyzed":true}	116120	QTg4a0Bl/gER0N+1LfG1qw==	2021-01-17 09:53:06.478018
+\.
+
+
+--
+-- Data for Name: admin_users; Type: TABLE DATA; Schema: public; Owner: nilosh
+--
+
+COPY public.admin_users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: nilosh
+--
+
+COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2021-01-16 05:37:48.911194	2021-01-16 05:37:48.911194
+schema_sha1	33af4ce2dcfd4d102ada2f6879ac99b69f3e7309	2021-01-16 05:37:48.920789	2021-01-16 05:37:48.920789
+\.
+
+
+--
+-- Data for Name: reviews; Type: TABLE DATA; Schema: public; Owner: nilosh
+--
+
+COPY public.reviews (id, rating, review, user_id, trip_detail_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: nilosh
+--
+
+COPY public.roles (id, role_name, created_at, updated_at) FROM stdin;
+1	Admin	2021-01-16 05:37:49.241518	2021-01-16 05:37:49.241518
+2	Standard	2021-01-16 05:37:49.247861	2021-01-16 05:37:49.247861
+3	Premium	2021-01-16 05:37:49.255039	2021-01-16 05:37:49.255039
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: nilosh
+--
+
+COPY public.schema_migrations (version) FROM stdin;
+20210104060217
+20201215064136
+20201216074810
+20201216074925
+20201216183024
+20201222083246
+20210101180123
+20210103113353
+\.
+
+
+--
+-- Data for Name: trip_details; Type: TABLE DATA; Schema: public; Owner: nilosh
+--
+
+COPY public.trip_details (id, location, start, "end", description, user_id, created_at, updated_at) FROM stdin;
+1	Ella, Sri Lanka	2021-01-21	2021-01-25	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.	2	2021-01-16 05:44:54.057677	2021-01-16 05:44:54.092037
+2	Galle, Sri Lanka	2021-01-22	2021-01-25	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.	2	2021-01-16 05:46:13.646475	2021-01-16 05:46:13.672297
+3	Trincomalee, Sri Lanka	2021-01-27	2021-01-31	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.	3	2021-01-16 05:47:46.358946	2021-01-16 05:47:46.381833
+4	Mirissa, Sri Lanka	2021-03-10	2021-03-20	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.	4	2021-01-16 05:52:12.281121	2021-01-16 05:52:12.321221
+\.
+
+
+--
+-- Data for Name: user_relationships; Type: TABLE DATA; Schema: public; Owner: nilosh
+--
+
+COPY public.user_relationships (id, follower_id, followee_id, created_at, updated_at) FROM stdin;
+1	4	3	2021-01-16 05:53:15.548361	2021-01-16 05:53:15.548361
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: nilosh
+--
+
+COPY public.users (id, full_name, gender, dob, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, created_at, updated_at, role_id) FROM stdin;
+1	John Doe	1	2015-11-08 00:00:00	admin@example.com	$2a$12$5fq/nSOoLTqQImsY1LzW..Fmv.p3NuJmjdhUf/0yyT3gUopuePcjy	\N	\N	\N	2021-01-16 05:37:49.525102	2021-01-16 05:37:49.525102	1
+3	Mary Cooper	2	1990-01-10 00:00:00	mary@example.com	$2a$12$OMS3pLd3CI.h7Rt1N35/Yu65BopB.PbfawyAciysPXjRU1JXN4076	\N	\N	\N	2021-01-16 05:46:56.322897	2021-01-16 05:47:12.4379	2
+4	Vanessa Myer	2	1998-08-20 00:00:00	vanessa@example.com	$2a$12$aI/DaGip3mEhjMluAoTuI.OKFpTCDXq0Ut.DXVXvmyreoIZspSrM6	\N	\N	\N	2021-01-16 05:49:12.292919	2021-01-16 05:49:43.46464	2
+2	Hardin Scott	1	1997-11-06 00:00:00	hardin@example.com	$2a$12$9LZwsgSEsVdO3EJg4fFoN.zu/tXehLE3DgyrWOTHNC/kLWAgajrYK	\N	\N	\N	2021-01-16 05:43:35.108725	2021-01-17 09:53:06.48756	2
+\.
+
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nilosh
+--
+
+SELECT pg_catalog.setval('public.active_admin_comments_id_seq', 1, false);
+
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nilosh
+--
+
+SELECT pg_catalog.setval('public.active_storage_attachments_id_seq', 9, true);
+
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nilosh
+--
+
+SELECT pg_catalog.setval('public.active_storage_blobs_id_seq', 9, true);
+
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nilosh
+--
+
+SELECT pg_catalog.setval('public.admin_users_id_seq', 1, false);
+
+
+--
+-- Name: reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nilosh
+--
+
+SELECT pg_catalog.setval('public.reviews_id_seq', 1, false);
+
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nilosh
+--
+
+SELECT pg_catalog.setval('public.roles_id_seq', 3, true);
+
+
+--
+-- Name: trip_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nilosh
+--
+
+SELECT pg_catalog.setval('public.trip_details_id_seq', 4, true);
+
+
+--
+-- Name: user_relationships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nilosh
+--
+
+SELECT pg_catalog.setval('public.user_relationships_id_seq', 1, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nilosh
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 4, true);
+
+
+--
+-- Name: active_admin_comments active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.active_admin_comments
+    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_attachments active_storage_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT active_storage_attachments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_blobs active_storage_blobs_pkey; Type: CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.active_storage_blobs
+    ADD CONSTRAINT active_storage_blobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: admin_users admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.admin_users
+    ADD CONSTRAINT admin_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: reviews reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.reviews
+    ADD CONSTRAINT reviews_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.roles
+    ADD CONSTRAINT roles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: trip_details trip_details_pkey; Type: CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.trip_details
+    ADD CONSTRAINT trip_details_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_relationships user_relationships_pkey; Type: CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.user_relationships
+    ADD CONSTRAINT user_relationships_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE INDEX index_active_admin_comments_on_author_type_and_author_id ON public.active_admin_comments USING btree (author_type, author_id);
+
+
+--
+-- Name: index_active_admin_comments_on_namespace; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE INDEX index_active_admin_comments_on_namespace ON public.active_admin_comments USING btree (namespace);
+
+
+--
+-- Name: index_active_admin_comments_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON public.active_admin_comments USING btree (resource_type, resource_id);
+
+
+--
+-- Name: index_active_storage_attachments_on_blob_id; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE INDEX index_active_storage_attachments_on_blob_id ON public.active_storage_attachments USING btree (blob_id);
+
+
+--
+-- Name: index_active_storage_attachments_uniqueness; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE UNIQUE INDEX index_active_storage_attachments_uniqueness ON public.active_storage_attachments USING btree (record_type, record_id, name, blob_id);
+
+
+--
+-- Name: index_active_storage_blobs_on_key; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_blobs USING btree (key);
+
+
+--
+-- Name: index_admin_users_on_email; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE UNIQUE INDEX index_admin_users_on_email ON public.admin_users USING btree (email);
+
+
+--
+-- Name: index_admin_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON public.admin_users USING btree (reset_password_token);
+
+
+--
+-- Name: index_reviews_on_trip_detail_id; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE INDEX index_reviews_on_trip_detail_id ON public.reviews USING btree (trip_detail_id);
+
+
+--
+-- Name: index_reviews_on_user_id; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE INDEX index_reviews_on_user_id ON public.reviews USING btree (user_id);
+
+
+--
+-- Name: index_trip_details_on_user_id; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE INDEX index_trip_details_on_user_id ON public.trip_details USING btree (user_id);
+
+
+--
+-- Name: index_user_relationships_on_followee_id; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE INDEX index_user_relationships_on_followee_id ON public.user_relationships USING btree (followee_id);
+
+
+--
+-- Name: index_user_relationships_on_follower_id; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE INDEX index_user_relationships_on_follower_id ON public.user_relationships USING btree (follower_id);
+
+
+--
+-- Name: index_user_relationships_on_follower_id_and_followee_id; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE UNIQUE INDEX index_user_relationships_on_follower_id_and_followee_id ON public.user_relationships USING btree (follower_id, followee_id);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING btree (reset_password_token);
+
+
+--
+-- Name: index_users_on_role_id; Type: INDEX; Schema: public; Owner: nilosh
+--
+
+CREATE INDEX index_users_on_role_id ON public.users USING btree (role_id);
+
+
+--
+-- Name: users fk_rails_642f17018b; Type: FK CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT fk_rails_642f17018b FOREIGN KEY (role_id) REFERENCES public.roles(id);
+
+
+--
+-- Name: reviews fk_rails_74a66bd6c5; Type: FK CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.reviews
+    ADD CONSTRAINT fk_rails_74a66bd6c5 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: trip_details fk_rails_9f7558a2ef; Type: FK CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.trip_details
+    ADD CONSTRAINT fk_rails_9f7558a2ef FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: active_storage_attachments fk_rails_c3b3935057; Type: FK CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT fk_rails_c3b3935057 FOREIGN KEY (blob_id) REFERENCES public.active_storage_blobs(id);
+
+
+--
+-- Name: reviews fk_rails_c48ce8e190; Type: FK CONSTRAINT; Schema: public; Owner: nilosh
+--
+
+ALTER TABLE ONLY public.reviews
+    ADD CONSTRAINT fk_rails_c48ce8e190 FOREIGN KEY (trip_detail_id) REFERENCES public.trip_details(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
