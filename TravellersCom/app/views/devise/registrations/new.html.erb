@@ -12,7 +12,7 @@
         <div class="row row-style">
           <div class="col-12">
             <%= f.label :gender %><br />
-            <%= f.select :gender, gender_lists, class: "sign-up-textbox" %>
+            <%= f.select :gender, User.gender_for_select, {}, class: "sign-up-textbox" %>
           </div>
         </div>
         <div class="row row-style">
@@ -44,7 +44,7 @@
         </div>
         <div class="row row-style">
           <div class="col-12">
-            <%= f.submit "Sign up", class: "btn btn-light" %>
+            <%= f.submit "Sign up", class: "btn btn-dark" %>
           </div>
         </div>
 

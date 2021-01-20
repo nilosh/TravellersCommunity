@@ -1,0 +1,33 @@
+<section class="container-fluid signed-in-content">
+  <%= render 'layouts/tabs' %>
+  <div class = "row">
+    <% if @followings.count > 0 %>
+      <% @followings.each do |following| %>
+        <% @following_user = User.find_by(:id => following.followee_id) %>
+        <% @relationship = @following_user.followers.find_by(follower: current_user) %>
+        <div class = "col">
+          <div class="card" style="width: 18rem;">
+            <h5 class="card-title" style = "text-align:center; padding-top: 20px;">
+              <%= link_to @following_user.full_name, user_path(@following_user.id) %>
+            </h5>
+            <hr>
+            <div style="text-align:center; margin:auto;">
+              <%= image_tag @following_user.avatar, class: "rounded-circle card-img-top",
+              style: "width: 90px; height: 90px;" %>
+            </div>
+            <div class="card-body" style = "text-align:center;">
+                <%= link_to "Follow", devise_user_relationships_path(@following_user.id), method: :post, 
+                class: 'btn btn-dark' unless @relationship.present? %>
+                <%= link_to "Unfollow", user_relationship_path(@relationship.id), method: :delete,
+                class: 'btn btn-dark' if @relationship.present? %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class = "col-12" style = "text-align: center; padding-top: 50px;">
+        <h6> You aren't following anyone yet. </h6>
+      </div>
+    <% end %>
+  </div>
+</section>

@@ -3,22 +3,39 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
+// Web Colors
+$base-color: #EAE7DE;
+$base-color-variation-1: whitesmoke;
+$base-color-variation-2: white;
+$text-color-main: black;
+$border-color:black;
+
+a {
+  color: $text-color-main !important;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: $text-color-main !important;
+  text-decoration: none !important;
+}
+
 ul {
   padding: 0px;
   padding-top: 15px;
-  color: white;
+  color: $base-color-variation-2;
 }
 
 ul a {
-  color: white;
+  color: $base-color-variation-2;
 }
 
 h6 {
-  color: white;
+  color: $base-color-variation-2;
 }
 
 .form-headings{
-  color: white;
+  color: $base-color-variation-2;
   font-size: large;
   padding-bottom: 20px;
   padding-top: 150px;
@@ -35,7 +52,7 @@ h6 {
 }
 
 .icon-bg {
-  background-color: white;
+  background-color: $base-color-variation-2;
   width: 36px;
   height: 36px;
   text-align: center;
@@ -66,7 +83,7 @@ h6 {
 .form-text-area {
   width: 250px;
   height: 36px;
-  border: 2px solid white;
+  border: 2px solid $base-color-variation-2;
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -79,31 +96,27 @@ h6 {
   max-width: 400px;
   margin: auto;
   text-align: center;
-  color: white;
+  color: $base-color-variation-2;
 }
 
 .sign-up-textbox {
   max-width: 370px !important;
   border-radius: 5px !important;
-  border: 1px solid white !important;
-  background-color: white !important;
+  border: 1px solid $base-color-variation-2 !important;
+  background-color: $base-color-variation-2 !important;
   padding: 8px !important;
   width: unset !important;
   display: unset !important;
   height: unset !important;
 }
 
-.row-style {
-  
-}
-
 .select {
   border-radius: 5px;
-  border: 1px solid white;
+  border: 1px solid $base-color-variation-2;
 }
 
 .form-headings-sign-up{
-  color: white;
+  color: $base-color-variation-2;
   font-size: large;
   padding-bottom: 20px;
   padding-top: 100px;
@@ -112,4 +125,97 @@ h6 {
 
 .btn-search {
   width: 80px;
+}
+
+.card-trip-img {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: auto;
+  text-align: center;
+}
+
+.card-location {
+  display: inline-block;
+  vertical-align:middle;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+}
+
+.card-desc {
+  text-align: justify;
+  align-content: center;
+  padding: 10px;
+}
+
+.card-user {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0px;
+  margin-top: 10px;
+}
+
+.card {
+  max-width: 300px !important;
+  max-height: 600px;
+  padding: 10px;
+  font-size: 14px;
+  display: inline-block;
+  margin: 5px;
+}
+
+.toFollow {
+  background-color: $base-color-variation-2;
+  padding: 10px;
+  margin: auto;
+  width: inherit;
+}
+
+.sign-in-text {
+  color: $base-color-variation-2 !important;
+}
+
+.user-list-small {
+  display: none;
+  visibility: hidden;
+}
+
+.display-lg-none {
+  display: none;
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .card {
+    max-width: fit-content !important;
+  }
+
+  .display-none {
+    visibility: hidden !important;
+    display: none !important;
+    width: 0px !important;
+    height: 0px!important;
+  }
+
+  .card-row-sm {
+    margin: auto;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+  }
+
+  .btn-sm {
+    font-size: 14px !important;
+  }
+
+  .display-lg-none {
+    display: unset;
+    visibility: visible;
+  }
+
+  .form-control {
+    font-size: 14px !important;
+  }
 }

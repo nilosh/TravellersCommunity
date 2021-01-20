@@ -2,8 +2,8 @@ class CreateTripDetails < ActiveRecord::Migration[6.0]
   def change
     create_table :trip_details do |t|
       t.string :location
-      t.date :startDate
-      t.date :endDate
+      t.date :start
+      t.date :end
       t.text :description
       t.references :user, null: false, foreign_key: true
 

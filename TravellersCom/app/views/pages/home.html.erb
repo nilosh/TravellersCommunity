@@ -1,1 +1,125 @@
-<h1>Home</h1>
+<section class="container-fluid signed-in-content">
+  <div>
+    <div class="row">
+      <div class = "col-10 card-row-sm">
+        <div class = "row">
+          <% @trip_details.each do |trip_detail| %>
+            <div class="card">
+              <div class="row card-user-detail">
+                <div class = "col-3">
+                  <%= image_tag (trip_detail.user.avatar), class: "rounded-circle",
+                  style: "width: 60px; height: 60px;" %>
+                </div>
+                <div class="col-9">
+                  <h6 class = "card-user">
+                    <% if trip_detail.user == current_user %>
+                      <%= link_to trip_detail.user.full_name, edit_user_registration_path %>
+                    <% else %>
+                      <%= link_to trip_detail.user.full_name, user_path(trip_detail.user) %>
+                    <% end %>
+                  </h6>
+                  <hr>
+                </div>  
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <% if trip_detail.photos.attached? %>
+                    <% (0...1).each do |photo| %>
+                      <div class="card-trip-img">
+                        <%= image_tag (trip_detail.photos[photo]), 
+                        style: "width: 150px; height: auto; margin:auto;" %>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <p style = "text-align: center;"><i>No Photos</i></p>
+                  <% end %>
+                </div>
+              </div>
+              <div class="row card-location">
+                <div class="col-12">
+                  <hr>
+                  <%= trip_detail.location %> 
+                </div>
+                <div class="col-12">
+                  <%= trip_detail.start %> - <%= trip_detail.end %> 
+                  <hr>
+                </div>
+              </div>
+              <div class="row card-desc">
+                <div class="col-12">
+                  <% if trip_detail.description.length > 100 %>
+                    <%= truncate(trip_detail.description, length: 100) { link_to "See More", trip_detail } %>
+                  <% else %>
+                    <%= trip_detail.description %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class = "col-2 display-none">
+        <div class = "row">
+          <div class = "col-12">
+            <h6 style = "text-align:center; padding-top:20px;"><strong>User List</strong></h6>
+          </div>
+        </div>
+        <% @users.each do |user| %>
+          <%if user.id != current_user.id %>
+            <% @relationship = user.followers.find_by(follower: current_user) %>
+            <% if !@relationship %> 
+              <div class = "row">
+                <div class = "col-12">
+                  <div class = "card toFollow d-inline-block">
+                    <%= image_tag user.avatar, class: "rounded-circle card-img-top d-inline-block display-none",
+                    style: "width: 40px; height: 40px;" %>
+                    <%= user.full_name %>
+                    <hr>
+                    <center>
+                    <%= link_to "Follow", devise_user_relationships_path(user.id), method: :post, 
+                      class: 'btn btn-dark display-none' unless @relationship.present? %>
+                    <%= link_to "Unfollow", user_relationship_path(@relationship.id), method: :delete,
+                      class: 'btn btn-dark display-none' if @relationship.present? %>
+                    </center>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>  
+    <div class = "row user-list-small display-lg-none">
+      <div class = "col-sm-12 display-lg-none">
+        <h6 style = "text-align:center;">User List </h6>
+        <hr>
+        <div style = "text-align:center; margin:auto;">
+          <% @users.each do |user| %>
+          <%if user.id != current_user.id %>
+            <% @relationship = user.followers.find_by(follower: current_user) %>
+            <% if !@relationship %> 
+              <div class = "row">
+                <div class = "col-12">
+                  <div class = "card toFollow d-inline-block display-lg-none">
+                    <%= image_tag user.avatar, 
+                    class: "rounded-circle card-img-top d-inline-block display-lg-none",
+                    style: "width: 40px; height: 40px;" %>
+                    <div class = "d-inline-block display-lg-none"><%= user.full_name %></div>
+                    <hr>
+                    <center>
+                    <%= link_to "Follow", devise_user_relationships_path(user.id), method: :post, 
+                      class: 'btn btn-dark btn-sm display-lg-none' unless @relationship.present? %>
+                    <%= link_to "Unfollow", user_relationship_path(@relationship.id), method: :delete,
+                      class: 'btn btn-dark btn-sm display-lg-none' if @relationship.present? %>
+                    </center>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

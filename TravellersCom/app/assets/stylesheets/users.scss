@@ -1,0 +1,69 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// Web Colors
+$base-color: #EAE7DE;
+$base-color-variation-1: whitesmoke;
+$base-color-variation-2: white;
+$text-color-main: black;
+$border-color:black;
+
+.info {
+  background-color: $base-color-variation-1;
+  max-width: 300px !important; 
+  border-radius: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.name {
+  text-align: justify;
+  vertical-align: middle;
+  padding-left: 25px;
+  padding-right: 30px;
+}
+
+.content {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: auto;
+  max-width: 500px;
+}
+
+.tag {
+  text-align: right;
+  font-weight: bold;
+}
+
+.btn {
+  width: fit-content;
+  color: $base-color-variation-2 !important;
+}
+
+.btn:hover {
+  color: white !important;
+}
+
+
+// For small screen.
+@media only screen and (max-width: 600px) {
+
+  .btn-small {
+    font-size: 14px !important;
+    max-width: fit-content !important;
+  }
+
+  .name {
+    font-size: 18px !important;
+    padding: 5px !important;
+  }
+
+  .content {
+    width: 100% !important;
+  }
+
+  .info {
+    max-width: 200px !important;
+  }
+}

@@ -1,24 +1,26 @@
-<section class="container-fluid signed-in-content">
-  <div class="row">
-    <div class="col-6">
+<section class = "container-fluid signed-in-content">
+  <div class = "row">
+    <div class = "col-6">
       <h3>My Trips</h3>
     </div>
-    <div class="col-6">
+    <div class = "col-6 display-none">
     <%= link_to(trip_details_path) do %>
-      <button>Add New Trip</button>
+      <button class = "btn btn-dark">Add New Trip</button>
+      <hr>
     <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-6">
-      <div class="row">
-        <div class="col-12">
+  <div class = "row">
+    <div class = "col-lg-6 col-md-6 col-sm-12">
+      <div class = "row">
+        <div class = "col-12">
           <% @trip_details.each do |trip_detail| %>
             <% if trip_detail.user_id == current_user.id %>
               <%= link_to(trip_detail) do %>
                 <div>
                   <%= trip_detail.location %> </br>
-                  <%= trip_detail.startDate %> - <%= trip_detail.endDate %> 
+                  <%= trip_detail.start %> - <%= trip_detail.end %> 
+                  <hr>
                 </div>
               <% end %>
             <% end %>
@@ -26,11 +28,21 @@
         </div>
       </div>
     </div>
-    <div class="col-6">
+    <div class = "col-6 display-none">
       <%= render 'form', trip_detail: @trip_detail %>
     </div>
   </div>
+  <div class = "row display-lg-none">
+    <div class = "col-12 display-lg-none">
+      <%= link_to(trip_details_path) do %>
+        <button class = "btn btn-dark">Add New Trip</button>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+  <div class = "row display-lg-none">
+    <div class = "col-12 col-sm-12 display-lg-none">
+      <%= render 'form', trip_detail: @trip_detail, class:"display-lg-none" %>
+    </div>
+  </div>
 </section>
-
-
-<p id="notice"><%= notice %></p>

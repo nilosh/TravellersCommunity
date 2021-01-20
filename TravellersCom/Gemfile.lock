@@ -154,6 +154,7 @@ GEM
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    pagy (3.10.0)
     pg (1.2.3)
     postgresql (1.0.0)
       pg
@@ -220,6 +221,9 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    simple_form (5.0.3)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -231,6 +235,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    tabs_on_rails (3.0.0)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -276,13 +281,16 @@ DEPENDENCIES
   jquery-ui-rails (~> 6.0, >= 6.0.1)
   listen (~> 3.2)
   mini_magick (~> 4.11)
+  pagy (~> 3.10)
   postgresql (~> 1.0)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
   sass-rails (>= 6)
   selenium-webdriver
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  tabs_on_rails (~> 3.0)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
