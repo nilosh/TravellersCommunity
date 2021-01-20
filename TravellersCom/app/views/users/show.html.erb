@@ -1,75 +1,75 @@
 <section class="container-fluid signed-in-content">
-      <div class="content">
-        <div class="row">
-          <div class="col d-inline-block">
-            <%= image_tag @user.avatar, style: "width: 100px; height: 100px", class: 'rounded-circle' %>
-            <h4 class = "d-inline-block name"><%= @user.full_name %></h4>
-            <% if @user != current_user %>
-              <%= link_to "Follow", devise_user_relationships_path(@user), method: :post, 
-              class: 'btn btn-dark btn-small' unless @relationship.present? %>
-              <%= link_to "Unfollow", user_relationship_path(@relationship.id), method: :delete,
-              class: 'btn btn-dark btn-small' if @relationship.present? %>
-            <% end %>
-          </div>
+  <div class="content">
+    <div class="row">
+      <div class="col d-inline-block">
+        <%= image_tag @user.avatar, style: "width: 100px; height: 100px", class: 'rounded-circle' %>
+        <h4 class = "d-inline-block name"><%= @user.full_name %></h4>
+        <% if @user != current_user %>
+          <%= link_to "Follow", devise_user_relationships_path(@user), method: :post, 
+          class: 'btn btn-dark btn-small' unless @relationship.present? %>
+          <%= link_to "Unfollow", user_relationship_path(@relationship.id), method: :delete,
+          class: 'btn btn-dark btn-small' if @relationship.present? %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 tag">
+        <label> Date-Of-Birth ➱ </label>
+      </div>
+      <div class="col-8 info">
+        <%= @user.dob.strftime("%d-%m-%Y") %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 tag">
+        <label> Gender ➱ </label>
+      </div>
+      <div class="col-8 info">
+        <%= @user.gender %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 tag">
+        <label> Email Address ➱ </label>
+      </div>
+      <div class="col-8 info">
+        <%= @user.email %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 tag">
+        <label> Photos ➱ </label>
+      </div>
+      <div class="col-8 info">
+        <% if @user.images.attached? %>
+        <div class="d-inline-block image-gallery">
+          <% (0...@user.images.count).each do |image| %>
+            <%= image_tag (@user.images[image]),
+              style: "width: auto; height: 100px" %>
+          <% end %>
         </div>
-        <div class="row">
-          <div class="col-4 tag">
-            <label> Date-Of-Birth ➱ </label>
-          </div>
-          <div class="col-8 info">
-            <%= @user.dob.strftime("%d-%m-%Y") %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4 tag">
-            <label> Gender ➱ </label>
-          </div>
-          <div class="col-8 info">
-            <%= @user.gender %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4 tag">
-            <label> Email Address ➱ </label>
-          </div>
-          <div class="col-8 info">
-            <%= @user.email %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4 tag">
-            <label> Photos ➱ </label>
-          </div>
-          <div class="col-8 info">
-            <% if @user.images.attached? %>
-            <div class="d-inline-block image-gallery">
-              <% (0...@user.images.count).each do |image| %>
-                <%= image_tag (@user.images[image]),
-                 style: "width: 100px; height: 100px" %>
+        <% else %>
+          <p style="text-align:center;">No Photos Yet</p>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 tag">
+        <label> Trips ➱ </label>
+      </div>
+      <div class="col-8 info">
+        <% if @user.trip_details.any? %>
+          <% @user.trip_details.each do |trip_detail| %>
+            <div style = "padding-top: 5px; padding-bottom: 5px">
+              <%= link_to(trip_detail) do %>
+                <strong><%= trip_detail.location %></strong> </br>
+                <%= trip_detail.start %> - 
+                <%= trip_detail.end %></br>
               <% end %>
             </div>
-            <% else %>
-              <p style="text-align:center;">No Photos Yet</p>
-            <% end %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4 tag">
-            <label> Trips ➱ </label>
-          </div>
-          <div class="col-8 info">
-            <% if @user.trip_details.any? %>
-              <% @user.trip_details.each do |trip_detail| %>
-                <div style = "padding-top: 5px; padding-bottom: 5px">
-                  <%= link_to(trip_detail) do %>
-                    <strong><%= trip_detail.location %></strong> </br>
-                    <%= trip_detail.start %> - 
-                    <%= trip_detail.end %></br>
-                  <% end %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
+          <% end %>
+        <% end %>
       </div>
+    </div>
+  </div>
 </section>

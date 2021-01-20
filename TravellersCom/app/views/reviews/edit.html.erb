@@ -1,9 +1,29 @@
-<%= form_for([@trip_detail, @review]) do |f| %>
-  <%= f.label :rating %>
-  <%= f.number_field :rating %>
-  </br>
-  <%= f.label :review %>
-  <%= f.text_area :review %>
-  </br>
-  <%= f.submit %>
+<div style = "margin:auto; text-align:center; padding-top: 30px; padding-bottom: 30px; height: 100vh;">
+  <h5> Edit Review <hr></h5>
+  <%= simple_form_for([@trip_detail, @review]) do |f| %>
+  <div style = "max-width: 500px; margin:auto; ">
+    <div class = "row">
+      <div class = "col" style = "text-align:right; max-width: 80px;">
+        <%= f.label :rating %>
+      </div>
+      <div class = "col">
+        <%= f.number_field :rating, class: "form-control" %>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "col" style = "text-align:right; max-width: 80px;">
+        <%= f.label :review %>
+      </div>
+      <div class = "col">
+        <%= f.text_area :review, class: "form-control", rows:8 %>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "col">
+        <%= f.submit %>
+      </div>
+    </div>
+  </div>
 <% end %>
+</div>
+

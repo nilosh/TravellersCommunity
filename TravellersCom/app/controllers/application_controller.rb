@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name, :gender, :dob])
     devise_parameter_sanitizer.permit(:account_update, keys: [:full_name, :gender, 
-      :dob, :avatar, images: [], remove_photo: [] ])
+      :dob, :avatar, images: []])
   end
 
   # Defines the path to follow after sign up.
@@ -48,15 +48,6 @@ class ApplicationController < ActionController::Base
   # This method initializes an empty array to hold the breadcrumb paths.
   def set_breadcrumb
     @breadcrumbs = []
-  end
-
-  # This method handles the deletion of images attached by the user.
-  def delete_image_attachment
-    @image = ActiveStorage::Attachment.find(params[:id])
-    @image.purge
-    redirect_back(fallback_location: request.referer)
-    # @user.images.find_by(params[:attachment_id]).purge
-  end
-  
+  end  
 
 end

@@ -57,13 +57,12 @@
       </div>
     </div>
   </div>
-  <div>
-    <div class = "row">
-      <div class = "col-12">
-        <% if @trip_detail.reviews.count > 0 %>
-          <%= render @trip_detail.reviews %>
-        <% end %>
-      </div>
+  <div class = "row">
+    <div class = "col-12">
+      <% if @trip_detail.reviews.count > 0 %>
+        <%# <%= render @trip_detail.reviews %> 
+        <%= render @trip_detail.reviews %>
+      <% end %>
     </div>
   </div>
 </section>

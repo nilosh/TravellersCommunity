@@ -12,7 +12,11 @@
                 </div>
                 <div class="col-9">
                   <h6 class = "card-user">
-                    <%= link_to trip_detail.user.full_name, user_path(trip_detail.user) %>
+                    <% if trip_detail.user == current_user %>
+                      <%= link_to trip_detail.user.full_name, edit_user_registration_path %>
+                    <% else %>
+                      <%= link_to trip_detail.user.full_name, user_path(trip_detail.user) %>
+                    <% end %>
                   </h6>
                   <hr>
                 </div>  
